@@ -1,5 +1,10 @@
+import { cn } from '@/lib/utils'
 import React from 'react'
 
-export default function MessageView() {
-  return <div>MessageView</div>
+type props = {
+  className?: string
+}
+
+export default function MessageView({ className }: props) {
+  return <div className={cn('h-screen', className)}>MessageView</div>
 }

@@ -19,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${fontCustom.variable} antialiased`}>
-        <Sidebar />
-        {children}
-        <MessageView />
+        <div className='flex min-h-screen bg-blue-500'>
+          <Sidebar />
+          {children}
+          <MessageView />
+        </div>
       </body>
     </html>
   )
