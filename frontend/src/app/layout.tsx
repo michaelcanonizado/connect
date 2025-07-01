@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
-import { fontCustom } from '@/app/styles/font'
+import { fontCustom } from '@/styles/font'
 
-import '@/app/styles/globals.css'
+import '@/styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'Messenger Clone',
