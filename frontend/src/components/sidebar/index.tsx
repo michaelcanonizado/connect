@@ -27,7 +27,7 @@ const linkGroup = [
 
 export default function Sidebar({ className }: props) {
   return (
-    <div className={cn('bg-muted h-screen p-4', className)}>
+    <div className={cn('bg-muted h-full p-4', className)}>
       {linkGroup.map(link => {
         return (
           <Link key={link.name} href={link.href}>

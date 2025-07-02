@@ -6,5 +6,5 @@ type props = {
 }
 
 export default function MessageView({ className }: props) {
-  return <div className={cn('h-screen', className)}>MessageView</div>
+  return <div className={cn('h-full p-4', className)}>MessageView</div>
 }

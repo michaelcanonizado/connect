@@ -19,12 +19,17 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${fontCustom.variable} antialiased`}>
-        <div className='flex min-h-screen bg-blue-500'>
+        <div className='bg-muted flex h-screen'>
           <Sidebar />
-          {children}
-          <MessageView />
+          <div className='bg-muted flex grow gap-4 py-4 pr-4'>
+            <div className='bg-background hidden max-w-[480px] min-w-[300px] flex-[1_1_480px] rounded-lg p-4 md:flex'>
+              {children}
+            </div>
+            <MessageView className='bg-background flex-[1_1_960px] rounded-lg' />
+          </div>
         </div>
       </body>
     </html>
   )
 }
+// minmax(300px,_480px)
