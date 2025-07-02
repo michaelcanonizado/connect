@@ -15,7 +15,7 @@ export default function Chats() {
           setIsActive(true)
         }}
       >
-        On
+        Mike has messaged you.
       </Button>
     </div>
   )

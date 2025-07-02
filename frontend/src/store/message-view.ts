@@ -6,6 +6,6 @@ type MessageView = {
 }
 
 export const useMessageView = create<MessageView>(set => ({
-  isActive: true,
-  setIsActive: (value) => set({ isActive: value })
+  isActive: false,
+  setIsActive: value => set({ isActive: value })
 }))
