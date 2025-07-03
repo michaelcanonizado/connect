@@ -5,6 +5,7 @@ import { Search, SquarePen } from 'lucide-react'
 import { Input } from '../ui/input'
 import { ProfilePicture, ProfilePictureProps } from '../profile'
 import { Card } from '../ui/card'
+import { ScrollArea, ScrollBar } from '../ui/scroll-area'
 
 type Props = {
   className?: string
@@ -12,7 +13,11 @@ type Props = {
 }
 
 function Inbox({ className, children }: Props) {
-  return <div className={cn('', className)}>{children}</div>
+  return (
+    <div className={cn('flex grow flex-col overflow-scroll', className)}>
+      {children}
+    </div>
+  )
 }
 
 function InboxHeader({ className, children }: Props) {
@@ -44,7 +49,7 @@ function InboxSearch({ className }: Props) {
   return (
     <div
       className={cn(
-        'mt-[13px] flex w-full items-center overflow-hidden rounded-full bg-black/5 px-4',
+        'mt-[13px] flex w-full items-center rounded-full bg-black/5 px-4',
         className
       )}
     >
@@ -74,9 +79,10 @@ function InboxChatHistoryWarning({ className }: Props) {
 
 function InboxMessageContainer({ className, children }: Props) {
   return (
-    <div className={cn('mt-4 flex w-full flex-col gap-0', className)}>
-      {children}
-    </div>
+    <ScrollArea className='mt-4 grow overflow-hidden'>
+      <div className={cn('flex flex-col gap-0', className)}>{children}</div>
+      <ScrollBar orientation='vertical' />
+    </ScrollArea>
   )
 }
 

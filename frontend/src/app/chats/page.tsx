@@ -1,7 +1,4 @@
-'use client'
-
 import React from 'react'
-// import { useMessageView } from '@/store/message-view'
 import {
   Inbox,
   InboxHeader,
@@ -16,76 +13,23 @@ import {
   InboxMessageSub,
   InboxMessageTextContainer
 } from '@/components/inbox'
-import { Profile, ProfilePicture, ProfileTitle } from '@/components/profile'
 
-const profiles = [
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Mikey',
-    isActive: true,
-    lastSeenInMins: 0
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Bella',
-    isActive: true,
-    lastSeenInMins: 0
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Max',
-    isActive: true,
-    lastSeenInMins: 0
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Lucy',
-    isActive: true,
-    lastSeenInMins: 0
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Cooper',
-    isActive: false,
-    lastSeenInMins: 2
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Daisy',
-    isActive: false,
-    lastSeenInMins: 5
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Rocky',
-    isActive: false,
-    lastSeenInMins: 8
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Milo',
-    isActive: false,
-    lastSeenInMins: 13
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Luna',
-    isActive: false,
-    lastSeenInMins: 19
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Bailey',
-    isActive: false,
-    lastSeenInMins: 27
-  },
-  {
-    src: 'https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D',
-    name: 'Charlie',
-    isActive: false,
-    lastSeenInMins: 30
-  }
-]
+const Message = function () {
+  return (
+    <InboxMessage>
+      <InboxMessageImage
+        src='https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D'
+        name='Stego Mike'
+        isActive={true}
+        lastSeenInMins={0}
+      />
+      <InboxMessageTextContainer>
+        <InboxMessageTitle>Stego Mike</InboxMessageTitle>
+        <InboxMessageSub>Stego sent a photo.•1h</InboxMessageSub>
+      </InboxMessageTextContainer>
+    </InboxMessage>
+  )
+}
 
 export default function Chats() {
   // const { setIsActive } = useMessageView(state => state)
@@ -99,42 +43,19 @@ export default function Chats() {
       <InboxSearch />
       <InboxChatHistoryWarning />
       <InboxMessageContainer>
-        <InboxMessage>
-          <InboxMessageImage
-            src='https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D'
-            name='Stego Mike'
-            isActive={true}
-            lastSeenInMins={0}
-          />
-          <InboxMessageTextContainer>
-            <InboxMessageTitle>Stego Mike</InboxMessageTitle>
-            <InboxMessageSub>Stego sent a photo.•1h</InboxMessageSub>
-          </InboxMessageTextContainer>
-        </InboxMessage>
-        <InboxMessage>
-          <InboxMessageImage
-            src='https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D'
-            name='Stego Mike'
-            isActive={true}
-            lastSeenInMins={0}
-          />
-          <InboxMessageTextContainer>
-            <InboxMessageTitle>Stego Mike</InboxMessageTitle>
-            <InboxMessageSub>Stego sent a photo.•1h</InboxMessageSub>
-          </InboxMessageTextContainer>
-        </InboxMessage>
-        <InboxMessage>
-          <InboxMessageImage
-            src='https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D'
-            name='Stego Mike'
-            isActive={true}
-            lastSeenInMins={0}
-          />
-          <InboxMessageTextContainer>
-            <InboxMessageTitle>Stego Mike</InboxMessageTitle>
-            <InboxMessageSub>Stego sent a photo.•1h</InboxMessageSub>
-          </InboxMessageTextContainer>
-        </InboxMessage>
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Message />
       </InboxMessageContainer>
     </Inbox>
   )
