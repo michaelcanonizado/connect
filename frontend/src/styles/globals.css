@@ -71,7 +71,7 @@ code on breakpoint hit */
 :root {
   --background: oklch(0.99 0 0);
   --foreground: oklch(0 0 0);
-  --card: oklch(1 0 0);
+  --card: oklch(0.99 0 0);
   --card-foreground: oklch(0 0 0);
   --popover: oklch(0.99 0 0);
   --popover-foreground: oklch(0 0 0);
