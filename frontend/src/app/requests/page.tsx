@@ -8,10 +8,30 @@ import {
   InboxMessageImage,
   InboxMessageTitle,
   InboxMessageSub,
-  InboxMessageTextContainer
+  InboxMessageTextContainer,
+  InboxTabs,
+  InboxTabsContent,
+  InboxTabsList,
+  InboxTabsTrigger
 } from '@/components/inbox'
 
-const Message = function () {
+const Message1 = function () {
+  return (
+    <InboxMessage>
+      <InboxMessageImage
+        src='https://www.wnct.com/wp-content/uploads/sites/99/2022/07/Cat.jpg?w=2560&h=1440&crop=1'
+        name='Jake'
+        isActive={true}
+        lastSeenInMins={0}
+      />
+      <InboxMessageTextContainer>
+        <InboxMessageTitle>Stego Mike</InboxMessageTitle>
+        <InboxMessageSub>Stego sent a photo.•1h</InboxMessageSub>
+      </InboxMessageTextContainer>
+    </InboxMessage>
+  )
+}
+const Message2 = function () {
   return (
     <InboxMessage>
       <InboxMessageImage
@@ -34,21 +54,47 @@ export default function Requests() {
       <InboxHeader>
         <InboxTitle>Requests</InboxTitle>
       </InboxHeader>
-      <InboxMessageContainer>
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-      </InboxMessageContainer>
+      <InboxTabs defaultValue='youMayKnow'>
+        <InboxTabsList>
+          <InboxTabsTrigger value='youMayKnow'>You may know</InboxTabsTrigger>
+          <InboxTabsTrigger value='spam'>Spam</InboxTabsTrigger>
+        </InboxTabsList>
+        <InboxTabsContent value='youMayKnow'>
+          <InboxMessageContainer>
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+            <Message1 />
+          </InboxMessageContainer>
+        </InboxTabsContent>
+        <InboxTabsContent value='spam'>
+          {' '}
+          <InboxMessageContainer>
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+            <Message2 />
+          </InboxMessageContainer>
+        </InboxTabsContent>
+      </InboxTabs>
     </Inbox>
   )
 }

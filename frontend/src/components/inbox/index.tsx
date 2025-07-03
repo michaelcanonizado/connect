@@ -6,6 +6,8 @@ import { Input } from '../ui/input'
 import { ProfilePicture, ProfilePictureProps } from '../profile'
 import { Card } from '../ui/card'
 import { ScrollArea, ScrollBar } from '../ui/scroll-area'
+import { Tabs } from '../ui/tabs'
+import { TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
 
 type Props = {
   className?: string
@@ -77,6 +79,55 @@ function InboxChatHistoryWarning({ className }: Props) {
   )
 }
 
+function InboxTabs({
+  className,
+  children,
+  defaultValue
+}: Props & { defaultValue: string }) {
+  return (
+    <div className={cn('flex flex-col', className)}>
+      <Tabs defaultValue={defaultValue}>{children}</Tabs>
+    </div>
+  )
+}
+
+function InboxTabsList({ className, children }: Props) {
+  return (
+    <TabsList className={cn('flex rounded-full py-[10px]', className)}>
+      {children}
+    </TabsList>
+  )
+}
+function InboxTabsTrigger({
+  className,
+  children,
+  value
+}: Props & { value: string }) {
+  return (
+    <TabsTrigger
+      value={value}
+      className={cn(
+        'data-[state=active]:bg-muted flex-1 rounded-full py-2 hover:cursor-pointer',
+        className
+      )}
+    >
+      {children}
+    </TabsTrigger>
+  )
+}
+
+function InboxTabsContent({
+  className,
+  children,
+  value
+}: Props & { value: string }) {
+  return (
+    <TabsContent value={value} className={cn('', className)}>
+      {children}
+    </TabsContent>
+  )
+}
+
 function InboxMessageContainer({ className, children }: Props) {
   return (
     <ScrollArea className='mt-4 grow overflow-hidden'>
@@ -142,6 +193,10 @@ export {
   InboxCompose,
   InboxSearch,
   InboxChatHistoryWarning,
+  InboxTabs,
+  InboxTabsList,
+  InboxTabsTrigger,
+  InboxTabsContent,
   InboxMessageContainer,
   InboxMessage,
   InboxMessageImage,
