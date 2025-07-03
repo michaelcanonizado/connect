@@ -7,7 +7,8 @@ import {
   InboxHeader,
   InboxTitle,
   InboxCompose,
-  InboxSearch
+  InboxSearch,
+  InboxChatHistoryWarning
 } from '@/components/inbox'
 
 export default function Chats() {
@@ -20,6 +21,7 @@ export default function Chats() {
         <InboxCompose />
       </InboxHeader>
       <InboxSearch />
+      <InboxChatHistoryWarning />
     </Inbox>
   )
 }

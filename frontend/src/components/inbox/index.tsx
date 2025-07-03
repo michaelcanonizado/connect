@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
-import { TextHeading } from '@/components/text'
+import { TextBody, TextHeading, TextSub } from '@/components/text'
 import { Search, SquarePen } from 'lucide-react'
 import { Input } from '../ui/input'
 
@@ -20,9 +20,11 @@ function InboxHeader({ className, children }: Props) {
     </div>
   )
 }
+
 function InboxTitle({ className, children }: Props) {
   return <TextHeading className={cn('', className)}>{children}</TextHeading>
 }
+
 function InboxCompose({ className }: Props) {
   return (
     <div
@@ -35,18 +37,44 @@ function InboxCompose({ className }: Props) {
     </div>
   )
 }
+
 function InboxSearch({ className }: Props) {
   return (
     <div
       className={cn(
-        'bg-muted mt-4 flex w-full items-center overflow-hidden rounded-md pl-2',
+        'mt-[13px] flex w-full items-center overflow-hidden rounded-full bg-black/5 px-4',
         className
       )}
     >
       <Search width={20} strokeWidth={2.2} className='text-black/60' />
-      <Input type='text' placeholder='Search Connect' className='pl-2' />
+      <Input
+        type='text'
+        placeholder='Search Connect'
+        className='bg-transparent pl-2'
+      />
     </div>
   )
 }
 
-export { Inbox, InboxHeader, InboxTitle, InboxCompose, InboxSearch }
+function InboxChatHistoryWarning({ className }: Props) {
+  return (
+    <div
+      className={cn(
+        'bg-muted mt-4 flex gap-[2px] rounded-md p-[14px]',
+        className
+      )}
+    >
+      <TextSub>Missing chat history. </TextSub>
+      <TextSub className='text-primary font-semibold'>Restore now</TextSub>
+    </div>
+  )
+}
+
+export {
+  Inbox,
+  InboxHeader,
+  InboxTitle,
+  InboxCompose,
+  InboxSearch,
+  InboxChatHistoryWarning
+}
