@@ -5,11 +5,11 @@ import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
 import { useMessageView } from '@/store/message-view'
 
-type props = {
+type Props = {
   className?: string
 }
 
-export default function MessageView({ className }: props) {
+export default function MessageView({ className }: Props) {
   const { isActive, setIsActive } = useMessageView(state => state)
 
   return (

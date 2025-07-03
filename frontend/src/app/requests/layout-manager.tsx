@@ -8,12 +8,12 @@ import MessageView from '@/components/message-view'
 import Sidebar from '@/components/sidebar'
 import { Card } from '@/components/ui/card'
 
-type props = {
+type Props = {
   className?: string
   children: React.ReactNode
 }
 
-export default function LayoutManager({ className, children }: props) {
+export default function LayoutManager({ className, children }: Props) {
   const { isActive: isMessageViewActive, setIsActive } = useMessageView(
     state => state
   )

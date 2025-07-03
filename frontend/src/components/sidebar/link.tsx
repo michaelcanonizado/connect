@@ -5,13 +5,13 @@ import { default as NextJSLink } from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
-type props = {
+type Props = {
   className?: string
   children: React.ReactNode
   href: string
 }
 
-export default function Link({ className, children, href }: props) {
+export default function Link({ className, children, href }: Props) {
   const pathname = usePathname()
 
   return (

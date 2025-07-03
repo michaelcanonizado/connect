@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import { MessageCircle, MessageCircleMore, Archive } from 'lucide-react'
 import Link from './link'
 
-type props = {
+type Props = {
   className?: string
 }
 
@@ -25,7 +25,7 @@ const linkGroup = [
   }
 ]
 
-export default function Sidebar({ className }: props) {
+export default function Sidebar({ className }: Props) {
   return (
     <div className={cn('bg-muted h-full p-4', className)}>
       {linkGroup.map(link => {
