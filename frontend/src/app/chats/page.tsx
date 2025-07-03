@@ -1,22 +1,25 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import { useMessageView } from '@/store/message-view'
+// import { useMessageView } from '@/store/message-view'
+import {
+  Inbox,
+  InboxHeader,
+  InboxTitle,
+  InboxCompose,
+  InboxSearch
+} from '@/components/inbox'
 
 export default function Chats() {
-  const { setIsActive } = useMessageView(state => state)
+  // const { setIsActive } = useMessageView(state => state)
 
   return (
-    <div>
-      <Button
-        className='hover:cursor-pointer'
-        onClick={() => {
-          setIsActive(true)
-        }}
-      >
-        Mike has messaged you.
-      </Button>
-    </div>
+    <Inbox>
+      <InboxHeader>
+        <InboxTitle>Chats</InboxTitle>
+        <InboxCompose />
+      </InboxHeader>
+      <InboxSearch />
+    </Inbox>
   )
 }
