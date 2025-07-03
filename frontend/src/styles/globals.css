@@ -50,6 +50,9 @@ code on breakpoint hit */
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  --color-active-100: oklch(0.8472 0.0785 139.93);
+  --color-active-200: oklch(0.7737 0.2202 139.93);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
