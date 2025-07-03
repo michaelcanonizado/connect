@@ -70,14 +70,6 @@ function InboxChatHistoryWarning({ className }: Props) {
   )
 }
 
-function InboxProfileSlider({ className, children }: Props) {
-  return (
-    <div className={cn('mt-4 flex gap-3 overflow-hidden', className)}>
-      {children}
-    </div>
-  )
-}
-
 export {
   Inbox,
   InboxHeader,
@@ -85,5 +77,4 @@ export {
   InboxCompose,
   InboxSearch,
   InboxChatHistoryWarning,
-  InboxProfileSlider
 }

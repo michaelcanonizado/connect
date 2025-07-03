@@ -8,8 +8,7 @@ import {
   InboxTitle,
   InboxCompose,
   InboxSearch,
-  InboxChatHistoryWarning,
-  InboxProfileSlider
+  InboxChatHistoryWarning
 } from '@/components/inbox'
 import { Profile, ProfilePicture, ProfileTitle } from '@/components/profile'
 
@@ -93,21 +92,6 @@ export default function Chats() {
       </InboxHeader>
       <InboxSearch />
       <InboxChatHistoryWarning />
-      <InboxProfileSlider>
-        {profiles.map((profile, index) => {
-          return (
-            <Profile key={index}>
-              <ProfilePicture
-                src={profile.src}
-                name={profile.name}
-                isActive={profile.isActive}
-                lastSeenInMins={profile.lastSeenInMins}
-              />
-              <ProfileTitle>{profile.name}</ProfileTitle>
-            </Profile>
-          )
-        })}
-      </InboxProfileSlider>
     </Inbox>
   )
 }
