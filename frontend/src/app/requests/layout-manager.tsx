@@ -6,6 +6,7 @@ import { useMessageView } from '@/store/message-view'
 import { cn } from '@/lib/utils'
 import MessageView from '@/components/message-view'
 import Sidebar from '@/components/sidebar'
+import { Card } from '@/components/ui/card'
 
 type props = {
   className?: string
@@ -68,20 +69,22 @@ export default function LayoutManager({ className, children }: props) {
     <div className={cn('bg-muted flex h-screen', className)}>
       <Sidebar />
       <div className='bg-muted flex grow gap-4 py-4 pr-4'>
-        <div
+        <Card
           className={cn(
-            'bg-background min-w-[300px] flex-[1_1_480px] rounded-lg p-4 md:flex md:max-w-[480px]',
+            'bg-background min-w-[300px] flex-[1_1_480px] rounded-lg md:flex md:max-w-[480px]',
             isMessageViewActive ? 'hidden' : ''
           )}
         >
           {children}
-        </div>
-        <MessageView
+        </Card>
+        <Card
           className={cn(
-            'bg-background custom:bg-red-500 flex-[1_1_960px] rounded-lg',
+            'bg-background custom:bg-red-500 flex-[1_1_960px]',
             isMessageViewActive ? '' : 'hidden'
           )}
-        />
+        >
+          <MessageView />
+        </Card>
       </div>
     </div>
   )
