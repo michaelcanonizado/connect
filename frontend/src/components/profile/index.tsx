@@ -8,6 +8,13 @@ type Props = {
   children?: React.ReactNode
 }
 
+export type ProfilePictureProps = {
+  src: string
+  name: string
+  isActive: boolean
+  lastSeenInMins: number
+}
+
 function Profile({ className, children }: Props) {
   return (
     <div className={cn('flex flex-col justify-center', className)}>
@@ -22,12 +29,7 @@ function ProfilePicture({
   name,
   isActive,
   lastSeenInMins
-}: Props & {
-  src: string
-  name: string
-  isActive: boolean
-  lastSeenInMins: number
-}) {
+}: Props & ProfilePictureProps) {
   const maxLastSeenTime = 30
   const showLastSeenBadge = !isActive && lastSeenInMins <= maxLastSeenTime
 
@@ -35,7 +37,7 @@ function ProfilePicture({
     <div className='relative'>
       <div
         className={cn(
-          'relative mb-1 size-[60px] overflow-hidden rounded-full',
+          'relative mb-1 size-[52px] overflow-hidden rounded-full',
           className
         )}
       >
@@ -48,7 +50,7 @@ function ProfilePicture({
       </div>
 
       {isActive && (
-        <div className='border-background box bg-active-200 absolute right-[-3%] bottom-[12%] box-border size-[15px] rounded-full border-2' />
+        <div className='border-background box bg-active-200 absolute right-[-8%] bottom-[8%] box-border size-[12px] rounded-full border-2' />
       )}
       {showLastSeenBadge && (
         <div className='border-background box bg-active-100 absolute right-[-10%] bottom-[12%] rounded-full border-2 px-[3px] pb-[2px]'>

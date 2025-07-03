@@ -1,8 +1,10 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
-import { TextHeading, TextSub } from '@/components/text'
+import { TextBody, TextHeading, TextSub } from '@/components/text'
 import { Search, SquarePen } from 'lucide-react'
 import { Input } from '../ui/input'
+import { ProfilePicture, ProfilePictureProps } from '../profile'
+import { Card } from '../ui/card'
 
 type Props = {
   className?: string
@@ -70,6 +72,63 @@ function InboxChatHistoryWarning({ className }: Props) {
   )
 }
 
+function InboxMessageContainer({ className, children }: Props) {
+  return (
+    <div className={cn('mt-4 flex w-full flex-col gap-0', className)}>
+      {children}
+    </div>
+  )
+}
+
+function InboxMessage({ className, children }: Props) {
+  return (
+    <Card
+      className={cn(
+        'hover:bg-muted flex w-full flex-row gap-2 p-[10px] pb-[8px] hover:cursor-pointer',
+        className
+      )}
+    >
+      {children}
+    </Card>
+  )
+}
+function InboxMessageImage({
+  className,
+  src,
+  name,
+  isActive,
+  lastSeenInMins
+}: Props & ProfilePictureProps) {
+  return (
+    <div className={cn('w-min', className)}>
+      <ProfilePicture
+        className=''
+        src={src}
+        name={name}
+        isActive={isActive}
+        lastSeenInMins={lastSeenInMins}
+      />
+    </div>
+  )
+}
+function InboxMessageTextContainer({ className, children }: Props) {
+  return (
+    <div className={cn('flex grow flex-col justify-center', className)}>
+      {children}
+    </div>
+  )
+}
+function InboxMessageTitle({ className, children }: Props) {
+  return <TextBody className={cn('', className)}>{children}</TextBody>
+}
+function InboxMessageSub({ className, children }: Props) {
+  return (
+    <TextSub className={cn('text-muted-foreground', className)}>
+      {children}
+    </TextSub>
+  )
+}
+
 export {
   Inbox,
   InboxHeader,
@@ -77,4 +136,10 @@ export {
   InboxCompose,
   InboxSearch,
   InboxChatHistoryWarning,
+  InboxMessageContainer,
+  InboxMessage,
+  InboxMessageImage,
+  InboxMessageTextContainer,
+  InboxMessageTitle,
+  InboxMessageSub
 }
