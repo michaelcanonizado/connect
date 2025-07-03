@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
-import { TextBody, TextHeading, TextSub } from '@/components/text'
+import { TextHeading, TextSub } from '@/components/text'
 import { Search, SquarePen } from 'lucide-react'
 import { Input } from '../ui/input'
 
@@ -70,11 +70,20 @@ function InboxChatHistoryWarning({ className }: Props) {
   )
 }
 
+function InboxProfileSlider({ className, children }: Props) {
+  return (
+    <div className={cn('mt-4 flex gap-3 overflow-hidden', className)}>
+      {children}
+    </div>
+  )
+}
+
 export {
   Inbox,
   InboxHeader,
   InboxTitle,
   InboxCompose,
   InboxSearch,
-  InboxChatHistoryWarning
+  InboxChatHistoryWarning,
+  InboxProfileSlider
 }
