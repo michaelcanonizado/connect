@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextBody, TextSub } from '../text'
+import { TextBody, TextHeading, TextSub } from '../text'
 import { cn } from '@/lib/utils'
 import { ProfilePicture, ProfilePictureProps } from '../profile'
 import { Ellipsis, Phone, Video } from 'lucide-react'
@@ -115,6 +115,79 @@ function MessageViewActionsConversationInformation({ className }: Props) {
   )
 }
 
+function MessageViewStartingBanner({ className, children }: Props) {
+  return (
+    <div className={cn('mt-10 flex flex-col items-center gap-6', className)}>
+      {children}
+    </div>
+  )
+}
+function MessageViewStartingBannerProfileContainer({
+  className,
+  children
+}: Props) {
+  return (
+    <div className={cn('flex flex-col items-center gap-[-12px]', className)}>
+      {children}
+    </div>
+  )
+}
+function MessageViewStartingBannerProfilePicture({
+  className,
+  src,
+  name,
+  isActive,
+  lastSeenInMins
+}: Props & ProfilePictureProps) {
+  return (
+    <div className={cn('w-min', className)}>
+      <ProfilePicture
+        className='size-[60px]'
+        src={src}
+        name={name}
+        isActive={isActive}
+        lastSeenInMins={lastSeenInMins}
+      />
+    </div>
+  )
+}
+function MessageViewStartingBannerProfileTitle({ className, children }: Props) {
+  return (
+    <TextHeading className={cn('text-[17px] font-semibold', className)}>
+      {children}
+    </TextHeading>
+  )
+}
+function MessageViewStartingBannerWarningContainer({
+  className,
+  children
+}: Props) {
+  return (
+    <div
+      className={cn(
+        'bg-muted flex flex-col items-center gap-0 rounded-md px-4 pt-2 pb-3',
+        className
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+function MessageViewStartingBannerWarningTitle({ className, children }: Props) {
+  return (
+    <TextSub className={cn('text-foreground font-bold', className)}>
+      {children}
+    </TextSub>
+  )
+}
+function MessageViewStartingBannerWarningSub({ className, children }: Props) {
+  return (
+    <TextSub className={cn('text-muted-foreground', className)}>
+      {children}
+    </TextSub>
+  )
+}
+
 export {
   MessageViewHeader,
   MessageViewProfileContainer,
@@ -125,5 +198,12 @@ export {
   MessageViewActionsContainer,
   MessageViewActionsConversationInformation,
   MessageViewActionsVoiceCall,
-  MessageViewActionsVideoCall
+  MessageViewActionsVideoCall,
+  MessageViewStartingBanner,
+  MessageViewStartingBannerProfileContainer,
+  MessageViewStartingBannerProfilePicture,
+  MessageViewStartingBannerProfileTitle,
+  MessageViewStartingBannerWarningContainer,
+  MessageViewStartingBannerWarningTitle,
+  MessageViewStartingBannerWarningSub
 }
