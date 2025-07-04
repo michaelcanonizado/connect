@@ -20,7 +20,13 @@ import {
   MessageViewStartingBannerProfilePicture,
   MessageViewStartingBannerProfileTitle,
   MessageViewStartingBannerWarningTitle,
-  MessageViewStartingBannerWarningSub
+  MessageViewStartingBannerWarningSub,
+  MessageViewChatContainer,
+  MessageViewChatActionsContainer,
+  MessageViewChatActionsMore,
+  MessageViewChatActionsFile,
+  MessageViewChatActionsInput,
+  MessageViewChatActionsLike
 } from './message-view'
 
 type Props = {
@@ -79,6 +85,13 @@ export default function MessageView({ className }: Props) {
           </MessageViewStartingBannerWarningSub>
         </MessageViewStartingBannerWarningContainer>
       </MessageViewStartingBanner>
+      <MessageViewChatContainer></MessageViewChatContainer>
+      <MessageViewChatActionsContainer>
+        <MessageViewChatActionsMore />
+        <MessageViewChatActionsFile />
+        <MessageViewChatActionsInput />
+        <MessageViewChatActionsLike />
+      </MessageViewChatActionsContainer>
     </div>
   )
 }

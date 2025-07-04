@@ -2,7 +2,8 @@ import React from 'react'
 import { TextBody, TextHeading, TextSub } from '../text'
 import { cn } from '@/lib/utils'
 import { ProfilePicture, ProfilePictureProps } from '../profile'
-import { Ellipsis, Phone, Video } from 'lucide-react'
+import { Ellipsis, ImagePlus, Phone, Plus, ThumbsUp, Video } from 'lucide-react'
+import { Input } from '../ui/input'
 
 type Props = {
   className?: string
@@ -188,6 +189,75 @@ function MessageViewStartingBannerWarningSub({ className, children }: Props) {
   )
 }
 
+function MessageViewChatContainer({ className, children }: Props) {
+  return <div className={cn('grow bg-red-500', className)}>{children}</div>
+}
+
+function MessageViewChatActionsContainer({ className, children }: Props) {
+  return (
+    <div
+      className={cn('flex flex-row items-center gap-1 px-4 py-3', className)}
+    >
+      {children}
+    </div>
+  )
+}
+function MessageViewChatActionsInput({ className }: Props) {
+  return (
+    <div
+      className={cn('bg-muted grow overflow-hidden rounded-full', className)}
+    >
+      <Input placeholder='Aa' type='text' className='py-0' />
+    </div>
+  )
+}
+function MessageViewChatActionsMore({ className }: Props) {
+  return (
+    <div
+      className={cn(
+        'bg-primary h-min rounded-full px-[5px] hover:cursor-pointer',
+        className
+      )}
+    >
+      <Plus
+        width={14}
+        strokeWidth={3.5}
+        fill='var(--background)'
+        stroke='var(--background)'
+      />
+    </div>
+  )
+}
+function MessageViewChatActionsFile({ className }: Props) {
+  return (
+    <div
+      className={cn(
+        'hover:bg-muted h-min rounded-full px-[8px] py-[5px] hover:cursor-pointer',
+        className
+      )}
+    >
+      <ImagePlus width={20} strokeWidth={2.2} stroke='var(--primary)' />
+    </div>
+  )
+}
+function MessageViewChatActionsLike({ className }: Props) {
+  return (
+    <div
+      className={cn(
+        'hover:bg-muted h-min rounded-full px-[8px] py-[5px] hover:cursor-pointer',
+        className
+      )}
+    >
+      <ThumbsUp
+        width={20}
+        strokeWidth={2.2}
+        fill='var(--primary)'
+        stroke='var(--primary)'
+      />
+    </div>
+  )
+}
+
 export {
   MessageViewHeader,
   MessageViewProfileContainer,
@@ -205,5 +275,11 @@ export {
   MessageViewStartingBannerProfileTitle,
   MessageViewStartingBannerWarningContainer,
   MessageViewStartingBannerWarningTitle,
-  MessageViewStartingBannerWarningSub
+  MessageViewStartingBannerWarningSub,
+  MessageViewChatContainer,
+  MessageViewChatActionsContainer,
+  MessageViewChatActionsInput,
+  MessageViewChatActionsMore,
+  MessageViewChatActionsFile,
+  MessageViewChatActionsLike
 }
