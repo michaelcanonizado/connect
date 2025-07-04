@@ -198,6 +198,31 @@ function MessageViewChatContainer({ className, children }: Props) {
     </div>
   )
 }
+function MessageViewChatPill({
+  className,
+  children,
+  variant
+}: Props & { variant: 'primary' | 'secondary' }) {
+  return (
+    <div
+      className={cn(
+        'w-fit rounded-full px-3 py-2',
+        variant == 'primary' && 'bg-primary self-end',
+        variant == 'secondary' && 'bg-muted self-start',
+        className
+      )}
+    >
+      <TextBody
+        className={cn(
+          variant == 'primary' && 'text-background',
+          variant == 'secondary' && 'text-foreground'
+        )}
+      >
+        {children}
+      </TextBody>
+    </div>
+  )
+}
 
 function MessageViewChatActionsContainer({ className, children }: Props) {
   return (
@@ -283,6 +308,7 @@ export {
   MessageViewStartingBannerWarningTitle,
   MessageViewStartingBannerWarningSub,
   MessageViewChatContainer,
+  MessageViewChatPill,
   MessageViewChatActionsContainer,
   MessageViewChatActionsInput,
   MessageViewChatActionsMore,

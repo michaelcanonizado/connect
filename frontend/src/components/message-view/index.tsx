@@ -25,9 +25,9 @@ import {
   MessageViewChatActionsMore,
   MessageViewChatActionsFile,
   MessageViewChatActionsInput,
-  MessageViewChatActionsLike
+  MessageViewChatActionsLike,
+  MessageViewChatPill
 } from './message-view'
-import { TextBody } from '../text'
 
 type Props = {
   className?: string
@@ -90,95 +90,123 @@ function StartingBanner() {
   )
 }
 
-function TempChatSelf({ msg }: { msg: string }) {
-  return (
-    <div className='bg-primary w-fit self-end rounded-full px-3 py-2'>
-      <TextBody className='text-background'>{msg}</TextBody>
-    </div>
-  )
-}
-function TempChatOther({ msg }: { msg: string }) {
-  return (
-    <div className='bg-muted w-fit self-start rounded-full px-3 py-2'>
-      <TextBody className='text-foreground'>{msg}</TextBody>
-    </div>
-  )
-}
-
 function Chats() {
   return (
     <>
-      <TempChatOther msg={'Lorem ipsum dolor sit amet, consectetur'} />
-      <TempChatOther msg={'adipiscing elit, sed do eiusmod'} />
-      <TempChatSelf msg={'tempor incididunt?'} />
-      <TempChatOther
-        msg={
-          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!'
-        }
-      />
-      <TempChatSelf msg={'eu fugiat nulla pariatur.'} />
-      <TempChatSelf msg={'Excepteur sint occaecat cupidatat non proident'} />
-      <TempChatSelf msg={'Ok?'} />
-      <TempChatOther msg={'pellentesque sem placerat.'} />
-      <TempChatOther
-        msg={
-          'empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum '
-        }
-      />
+      <MessageViewChatPill variant='secondary'>
+        Lorem ipsum dolor sit amet, consectetur
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        adipiscing elit, sed do eiusmod
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        tempor incididunt?
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore!
+      </MessageViewChatPill>
 
-      <TempChatSelf msg={'Lorem ipsum dolor sit amet, consectetur'} />
-      <TempChatSelf msg={'adipiscing elit, sed do eiusmod'} />
-      <TempChatOther msg={'tempor incididunt?'} />
-      <TempChatSelf
-        msg={
-          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!'
-        }
-      />
-      <TempChatOther msg={'eu fugiat nulla pariatur.'} />
-      <TempChatOther msg={'Excepteur sint occaecat cupidatat non proident'} />
-      <TempChatOther msg={'Ok?'} />
-      <TempChatSelf msg={'pellentesque sem placerat.'} />
-      <TempChatSelf
-        msg={
-          'empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum '
-        }
-      />
+      <MessageViewChatPill variant='primary'>
+        eu fugiat nulla pariatur.
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        Excepteur sint occaecat cupidatat non proident
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>Ok?</MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        pellentesque sem placerat.
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla
+        lacus nec metus bibendum{' '}
+      </MessageViewChatPill>
 
-      <TempChatOther msg={'Lorem ipsum dolor sit amet, consectetur'} />
-      <TempChatOther msg={'adipiscing elit, sed do eiusmod'} />
-      <TempChatSelf msg={'tempor incididunt?'} />
-      <TempChatOther
-        msg={
-          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!'
-        }
-      />
-      <TempChatSelf msg={'eu fugiat nulla pariatur.'} />
-      <TempChatSelf msg={'Excepteur sint occaecat cupidatat non proident'} />
-      <TempChatSelf msg={'Ok?'} />
-      <TempChatOther msg={'pellentesque sem placerat.'} />
-      <TempChatOther
-        msg={
-          'empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum '
-        }
-      />
+      <MessageViewChatPill variant='primary'>
+        Lorem ipsum dolor sit amet, consectetur
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        adipiscing elit, sed do eiusmod
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        tempor incididunt?
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore!
+      </MessageViewChatPill>
 
-      <TempChatSelf msg={'Lorem ipsum dolor sit amet, consectetur'} />
-      <TempChatSelf msg={'adipiscing elit, sed do eiusmod'} />
-      <TempChatOther msg={'tempor incididunt?'} />
-      <TempChatSelf
-        msg={
-          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!'
-        }
-      />
-      <TempChatOther msg={'eu fugiat nulla pariatur.'} />
-      <TempChatOther msg={'Excepteur sint occaecat cupidatat non proident'} />
-      <TempChatOther msg={'Ok?'} />
-      <TempChatSelf msg={'pellentesque sem placerat.'} />
-      <TempChatSelf
-        msg={
-          'empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum '
-        }
-      />
+      <MessageViewChatPill variant='secondary'>
+        eu fugiat nulla pariatur.
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        Excepteur sint occaecat cupidatat non proident
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>Ok?</MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        pellentesque sem placerat.
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla
+        lacus nec metus bibendum{' '}
+      </MessageViewChatPill>
+
+      <MessageViewChatPill variant='secondary'>
+        Lorem ipsum dolor sit amet, consectetur
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        adipiscing elit, sed do eiusmod
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        tempor incididunt?
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore!
+      </MessageViewChatPill>
+
+      <MessageViewChatPill variant='primary'>
+        eu fugiat nulla pariatur.
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        Excepteur sint occaecat cupidatat non proident
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>Ok?</MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        pellentesque sem placerat.
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla
+        lacus nec metus bibendum{' '}
+      </MessageViewChatPill>
+
+      <MessageViewChatPill variant='primary'>
+        Lorem ipsum dolor sit amet, consectetur
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        adipiscing elit, sed do eiusmod
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        tempor incididunt?
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore!
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        eu fugiat nulla pariatur.
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>
+        Excepteur sint occaecat cupidatat non proident
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='secondary'>Ok?</MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        pellentesque sem placerat.
+      </MessageViewChatPill>
+      <MessageViewChatPill variant='primary'>
+        empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla
+        lacus nec metus bibendum{' '}
+      </MessageViewChatPill>
     </>
   )
 }
