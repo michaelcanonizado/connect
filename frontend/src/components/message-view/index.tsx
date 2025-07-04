@@ -105,6 +105,84 @@ function TempChatOther({ msg }: { msg: string }) {
   )
 }
 
+function Chats() {
+  return (
+    <>
+      <TempChatOther msg={'Lorem ipsum dolor sit amet, consectetur'} />
+      <TempChatOther msg={'adipiscing elit, sed do eiusmod'} />
+      <TempChatSelf msg={'tempor incididunt?'} />
+      <TempChatOther
+        msg={
+          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!'
+        }
+      />
+      <TempChatSelf msg={'eu fugiat nulla pariatur.'} />
+      <TempChatSelf msg={'Excepteur sint occaecat cupidatat non proident'} />
+      <TempChatSelf msg={'Ok?'} />
+      <TempChatOther msg={'pellentesque sem placerat.'} />
+      <TempChatOther
+        msg={
+          'empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum '
+        }
+      />
+
+      <TempChatSelf msg={'Lorem ipsum dolor sit amet, consectetur'} />
+      <TempChatSelf msg={'adipiscing elit, sed do eiusmod'} />
+      <TempChatOther msg={'tempor incididunt?'} />
+      <TempChatSelf
+        msg={
+          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!'
+        }
+      />
+      <TempChatOther msg={'eu fugiat nulla pariatur.'} />
+      <TempChatOther msg={'Excepteur sint occaecat cupidatat non proident'} />
+      <TempChatOther msg={'Ok?'} />
+      <TempChatSelf msg={'pellentesque sem placerat.'} />
+      <TempChatSelf
+        msg={
+          'empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum '
+        }
+      />
+
+      <TempChatOther msg={'Lorem ipsum dolor sit amet, consectetur'} />
+      <TempChatOther msg={'adipiscing elit, sed do eiusmod'} />
+      <TempChatSelf msg={'tempor incididunt?'} />
+      <TempChatOther
+        msg={
+          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!'
+        }
+      />
+      <TempChatSelf msg={'eu fugiat nulla pariatur.'} />
+      <TempChatSelf msg={'Excepteur sint occaecat cupidatat non proident'} />
+      <TempChatSelf msg={'Ok?'} />
+      <TempChatOther msg={'pellentesque sem placerat.'} />
+      <TempChatOther
+        msg={
+          'empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum '
+        }
+      />
+
+      <TempChatSelf msg={'Lorem ipsum dolor sit amet, consectetur'} />
+      <TempChatSelf msg={'adipiscing elit, sed do eiusmod'} />
+      <TempChatOther msg={'tempor incididunt?'} />
+      <TempChatSelf
+        msg={
+          'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!'
+        }
+      />
+      <TempChatOther msg={'eu fugiat nulla pariatur.'} />
+      <TempChatOther msg={'Excepteur sint occaecat cupidatat non proident'} />
+      <TempChatOther msg={'Ok?'} />
+      <TempChatSelf msg={'pellentesque sem placerat.'} />
+      <TempChatSelf
+        msg={
+          'empus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum '
+        }
+      />
+    </>
+  )
+}
+
 export default function MessageView({ className }: Props) {
   const { isActive, setIsActive } = useMessageView(state => state)
 
@@ -113,6 +191,7 @@ export default function MessageView({ className }: Props) {
       <Header />
       <MessageViewChatContainer>
         <StartingBanner />
+        <Chats />
       </MessageViewChatContainer>
       <MessageViewChatActionsContainer>
         <MessageViewChatActionsMore />

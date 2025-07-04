@@ -193,8 +193,8 @@ function MessageViewStartingBannerWarningSub({ className, children }: Props) {
 
 function MessageViewChatContainer({ className, children }: Props) {
   return (
-    <div className={cn('flex grow flex-col gap-[2px] px-4', className)}>
-      {children}
+    <div className={cn('mb-2 grow overflow-y-auto px-4', className)}>
+      <div className='flex h-0 flex-col gap-[2px]'>{children}</div>
     </div>
   )
 }
