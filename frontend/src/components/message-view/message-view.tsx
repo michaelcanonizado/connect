@@ -118,7 +118,9 @@ function MessageViewActionsConversationInformation({ className }: Props) {
 
 function MessageViewStartingBanner({ className, children }: Props) {
   return (
-    <div className={cn('mt-10 flex flex-col items-center gap-6', className)}>
+    <div
+      className={cn('mt-10 mb-4 flex flex-col items-center gap-6', className)}
+    >
       {children}
     </div>
   )
@@ -190,7 +192,11 @@ function MessageViewStartingBannerWarningSub({ className, children }: Props) {
 }
 
 function MessageViewChatContainer({ className, children }: Props) {
-  return <div className={cn('grow bg-red-500', className)}>{children}</div>
+  return (
+    <div className={cn('flex grow flex-col gap-[2px] px-4', className)}>
+      {children}
+    </div>
+  )
 }
 
 function MessageViewChatActionsContainer({ className, children }: Props) {
