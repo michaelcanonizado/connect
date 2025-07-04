@@ -88,7 +88,7 @@ function InboxTabs({
 
 function InboxTabsList({ className, children }: Props) {
   return (
-    <TabsList className={cn('flex rounded-full py-[10px]', className)}>
+    <TabsList className={cn('flex rounded-full pt-[10px]', className)}>
       {children}
     </TabsList>
   )
@@ -125,7 +125,7 @@ function InboxTabsContent({
 
 function InboxMessageContainer({ className, children }: Props) {
   return (
-    <div className={cn('h-full gap-0 overflow-scroll', className)}>
+    <div className={cn('mt-4 h-full gap-0 overflow-scroll', className)}>
       <div className='h-0'>{children}</div>
     </div>
   )
