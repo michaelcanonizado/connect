@@ -54,12 +54,12 @@ export default function Requests() {
       <InboxHeader>
         <InboxTitle>Requests</InboxTitle>
       </InboxHeader>
-      <InboxTabs defaultValue='youMayKnow'>
+      <InboxTabs defaultValue='youMayKnow' className='h-full'>
         <InboxTabsList>
           <InboxTabsTrigger value='youMayKnow'>You may know</InboxTabsTrigger>
           <InboxTabsTrigger value='spam'>Spam</InboxTabsTrigger>
         </InboxTabsList>
-        <InboxTabsContent value='youMayKnow'>
+        <InboxTabsContent value='youMayKnow' className='grow'>
           <InboxMessageContainer>
             <Message1 />
             <Message1 />
@@ -76,8 +76,7 @@ export default function Requests() {
             <Message1 />
           </InboxMessageContainer>
         </InboxTabsContent>
-        <InboxTabsContent value='spam'>
-          {' '}
+        <InboxTabsContent value='spam' className='grow'>
           <InboxMessageContainer>
             <Message2 />
             <Message2 />

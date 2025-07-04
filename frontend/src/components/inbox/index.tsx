@@ -5,7 +5,6 @@ import { Search, SquarePen } from 'lucide-react'
 import { Input } from '../ui/input'
 import { ProfilePicture, ProfilePictureProps } from '../profile'
 import { Card } from '../ui/card'
-import { ScrollArea, ScrollBar } from '../ui/scroll-area'
 import { Tabs } from '../ui/tabs'
 import { TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
 
@@ -15,11 +14,7 @@ type Props = {
 }
 
 function Inbox({ className, children }: Props) {
-  return (
-    <div className={cn('flex grow flex-col overflow-scroll', className)}>
-      {children}
-    </div>
-  )
+  return <div className={cn('flex grow flex-col', className)}>{children}</div>
 }
 
 function InboxHeader({ className, children }: Props) {
@@ -130,10 +125,9 @@ function InboxTabsContent({
 
 function InboxMessageContainer({ className, children }: Props) {
   return (
-    <ScrollArea className='mt-4 grow overflow-hidden'>
-      <div className={cn('flex flex-col gap-0', className)}>{children}</div>
-      <ScrollBar orientation='vertical' />
-    </ScrollArea>
+    <div className={cn('h-full gap-0 overflow-scroll', className)}>
+      <div className='h-0'>{children}</div>
+    </div>
   )
 }
 
