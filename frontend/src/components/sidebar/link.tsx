@@ -20,8 +20,8 @@ export default function Link({ className, children, href }: Props) {
         className={cn(
           'rounded-lg p-[12px] hover:cursor-pointer',
           pathname === href
-            ? 'bg-black/5 text-black'
-            : 'text-black/60 hover:bg-black/5',
+            ? 'bg-muted-300 text-black'
+            : 'text-muted-400 hover:bg-muted-200',
           className
         )}
       >

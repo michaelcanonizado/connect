@@ -35,7 +35,7 @@ export const TextSub = ({ className, children }: props) => {
   return (
     <p
       className={cn(
-        'text-muted-foreground text-[13px] leading-[16px] font-[400] tracking-[0]',
+        'text-muted-400 text-[13px] leading-[16px] font-[400] tracking-[0]',
         className
       )}
     >

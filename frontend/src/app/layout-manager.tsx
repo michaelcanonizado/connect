@@ -66,9 +66,9 @@ export default function LayoutManager({ className, children }: Props) {
   }, [])
 
   return (
-    <div className={cn('bg-muted flex h-screen', className)}>
+    <div className={cn('flex h-screen', className)}>
       <Sidebar />
-      <div className='bg-muted flex grow gap-4 py-4 pr-4'>
+      <div className='bg-muted-100 flex grow gap-4 py-4 pr-4'>
         <Card
           className={cn(
             'bg-background min-w-[300px] flex-[1_1_480px] pb-0 md:flex md:max-w-[480px]',

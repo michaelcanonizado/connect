@@ -27,8 +27,12 @@ code on breakpoint hit */
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+
+  --color-muted-100: var(--muted-100);
+  --color-muted-200: var(--muted-200);
+  --color-muted-300: var(--muted-300);
+  --color-muted-400: var(--muted-400);
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
@@ -79,19 +83,23 @@ code on breakpoint hit */
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.9249 0 0);
   --secondary-foreground: oklch(0 0 0);
-  --muted: oklch(0.9702 0 0);
-  --muted-foreground: oklch(0.44 0 0);
+
+  --muted-100: oklch(0.9702 0 0);
+  --muted-200: oklch(0.9401 0 0);
+  --muted-300: oklch(0.928 0 0);
+  --muted-400: oklch(0.5134 0.0068 264.51);
+
   --accent: oklch(0.9249 0 0);
   --accent-foreground: oklch(0 0 0);
   --destructive: oklch(0.63 0.19 23.03);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.92 0 0);
+  --border: oklch(0.928 0 0);
   --input: oklch(0.9702 0 0);
   --ring: oklch(0 0 0);
   --chart-1: oklch(0.81 0.17 75.35);
   --chart-2: oklch(0.55 0.22 264.53);
   --chart-3: oklch(0.72 0 0);
-  --chart-4: oklch(0.92 0 0);
+  --chart-4: oklch(0.928 0 0);
   --chart-5: oklch(0.56 0 0);
   --sidebar: oklch(0.99 0 0);
   --sidebar-foreground: oklch(0 0 0);
@@ -130,8 +138,12 @@ code on breakpoint hit */
   --primary-foreground: oklch(0 0 0);
   --secondary: oklch(0.25 0 0);
   --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.23 0 0);
-  --muted-foreground: oklch(0.72 0 0);
+
+  --muted-100: oklch(0.9702 0 0);
+  --muted-200: oklch(0.9401 0 0);
+  --muted-300: oklch(0.928 0 0);
+  --muted-400: oklch(0.5134 0.0068 264.51);
+
   --accent: oklch(0.32 0 0);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.69 0.2 23.91);
@@ -143,7 +155,7 @@ code on breakpoint hit */
   --chart-2: oklch(0.58 0.21 260.84);
   --chart-3: oklch(0.56 0 0);
   --chart-4: oklch(0.44 0 0);
-  --chart-5: oklch(0.92 0 0);
+  --chart-5: oklch(0.928 0 0);
   --sidebar: oklch(0.18 0 0);
   --sidebar-foreground: oklch(1 0 0);
   --sidebar-primary: oklch(1 0 0);

@@ -75,8 +75,8 @@ function MessageViewActionsVoiceCall({ className }: Props) {
       <Phone
         width={20}
         strokeWidth={2.2}
-        fill='var(--muted-foreground)'
-        stroke='var(--muted-foreground)'
+        fill='var(--muted-400)'
+        stroke='var(--muted-400)'
       />
     </div>
   )
@@ -92,8 +92,8 @@ function MessageViewActionsVideoCall({ className }: Props) {
       <Video
         width={20}
         strokeWidth={2.2}
-        fill='var(--muted-foreground)'
-        stroke='var(--muted-foreground)'
+        fill='var(--muted-400)'
+        stroke='var(--muted-400)'
       />
     </div>
   )
@@ -168,7 +168,7 @@ function MessageViewStartingBannerWarningContainer({
   return (
     <div
       className={cn(
-        'bg-muted flex flex-col items-center gap-0 rounded-md px-4 pt-2 pb-3',
+        'bg-muted-100 flex flex-col items-center gap-0 rounded-md px-4 pt-2 pb-3',
         className
       )}
     >
@@ -184,11 +184,7 @@ function MessageViewStartingBannerWarningTitle({ className, children }: Props) {
   )
 }
 function MessageViewStartingBannerWarningSub({ className, children }: Props) {
-  return (
-    <TextSub className={cn('text-muted-foreground', className)}>
-      {children}
-    </TextSub>
-  )
+  return <TextSub className={cn('', className)}>{children}</TextSub>
 }
 
 function MessageViewChatContainer({ className, children }: Props) {
@@ -208,7 +204,7 @@ function MessageViewChatPill({
       className={cn(
         'w-fit rounded-full px-3 py-2',
         variant == 'primary' && 'bg-primary self-end',
-        variant == 'secondary' && 'bg-muted self-start',
+        variant == 'secondary' && 'bg-muted-100 self-start',
         className
       )}
     >
@@ -236,7 +232,10 @@ function MessageViewChatActionsContainer({ className, children }: Props) {
 function MessageViewChatActionsInput({ className }: Props) {
   return (
     <div
-      className={cn('bg-muted grow overflow-hidden rounded-full', className)}
+      className={cn(
+        'bg-muted-100 grow overflow-hidden rounded-full',
+        className
+      )}
     >
       <Input placeholder='Aa' type='text' className='py-0' />
     </div>
@@ -263,7 +262,7 @@ function MessageViewChatActionsFile({ className }: Props) {
   return (
     <div
       className={cn(
-        'hover:bg-muted h-min rounded-full px-[8px] py-[5px] hover:cursor-pointer',
+        'hover:bg-muted-100 h-min rounded-full px-[8px] py-[5px] hover:cursor-pointer',
         className
       )}
     >
@@ -275,7 +274,7 @@ function MessageViewChatActionsLike({ className }: Props) {
   return (
     <div
       className={cn(
-        'hover:bg-muted h-min rounded-full px-[8px] py-[5px] hover:cursor-pointer',
+        'hover:bg-muted-100 h-min rounded-full px-[8px] py-[5px] hover:cursor-pointer',
         className
       )}
     >

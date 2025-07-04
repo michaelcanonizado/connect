@@ -64,7 +64,7 @@ function InboxChatHistoryWarning({ className }: Props) {
   return (
     <div
       className={cn(
-        'bg-muted mt-4 flex gap-[2px] rounded-md p-[14px]',
+        'bg-muted-100 mt-4 flex gap-[2px] rounded-md p-[14px]',
         className
       )}
     >
@@ -102,7 +102,7 @@ function InboxTabsTrigger({
     <TabsTrigger
       value={value}
       className={cn(
-        'data-[state=active]:bg-muted flex-1 rounded-full py-2 hover:cursor-pointer',
+        'data-[state=active]:bg-muted-200 mt-2 flex-1 rounded-full py-2 hover:cursor-pointer',
         className
       )}
     >
@@ -135,7 +135,7 @@ function InboxMessage({ className, children }: Props) {
   return (
     <Card
       className={cn(
-        'hover:bg-muted flex w-full flex-row gap-2 p-[10px] pb-[8px] hover:cursor-pointer',
+        'hover:bg-muted-100 flex w-full flex-row gap-2 p-[10px] pb-[8px] hover:cursor-pointer',
         className
       )}
     >
@@ -173,11 +173,7 @@ function InboxMessageTitle({ className, children }: Props) {
   return <TextBody className={cn('', className)}>{children}</TextBody>
 }
 function InboxMessageSub({ className, children }: Props) {
-  return (
-    <TextSub className={cn('text-muted-foreground', className)}>
-      {children}
-    </TextSub>
-  )
+  return <TextSub className={cn('', className)}>{children}</TextSub>
 }
 
 export {
