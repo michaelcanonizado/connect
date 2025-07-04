@@ -79,7 +79,7 @@ export default function LayoutManager({ className, children }: Props) {
         </Card>
         <Card
           className={cn(
-            'bg-background custom:bg-red-500 flex-[1_1_960px]',
+            'bg-background custom:bg-red-500 flex-[1_1_960px] p-0',
             isMessageViewActive ? '' : 'hidden'
           )}
         >
