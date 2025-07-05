@@ -4,7 +4,7 @@ import { fontCustom } from '@/styles/font'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Messenger Clone',
+  title: 'Connect',
   description: '@michaelcanonizado'
 }
 
