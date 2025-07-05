@@ -5,6 +5,19 @@ type props = {
   children?: React.ReactNode
 }
 
+export const TextDisplay = ({ className, children }: props) => {
+  return (
+    <h1
+      className={cn(
+        'text-[80px] leading-[85px] font-[600] tracking-[-0.04em]',
+        className
+      )}
+    >
+      {children}
+    </h1>
+  )
+}
+
 export const TextHeading = ({ className, children }: props) => {
   return (
     <p
