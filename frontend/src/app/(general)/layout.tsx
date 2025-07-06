@@ -1,5 +1,5 @@
 import React from 'react'
-import LayoutManager from './requests/layout-manager'
+import LayoutManager from './layout-manager'
 
 function Layout({
   children
