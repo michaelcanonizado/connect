@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import React from 'react'
-import { TextSub } from '../text'
+import { TextBody, TextSub } from '../text'
 
 type Props = {
   className?: string
@@ -11,8 +11,6 @@ type Props = {
 export type ProfilePictureProps = {
   src: string
   name: string
-  isActive: boolean
-  lastSeenInMins: number
 }
 
 function Profile({ className, children }: Props) {
@@ -25,22 +23,13 @@ function Profile({ className, children }: Props) {
 
 function ProfilePicture({
   className,
+  children,
   src,
-  name,
-  isActive,
-  lastSeenInMins
+  name
 }: Props & ProfilePictureProps) {
-  const maxLastSeenTime = 30
-  const showLastSeenBadge = !isActive && lastSeenInMins <= maxLastSeenTime
-
   return (
-    <div className='relative'>
-      <div
-        className={cn(
-          'relative mb-1 size-[52px] overflow-hidden rounded-full',
-          className
-        )}
-      >
+    <div className={cn('relative size-[52px]', className)}>
+      <div className='relative mb-1 size-full overflow-hidden rounded-full'>
         <Image
           className='object-cover object-center'
           src={src}
@@ -48,23 +37,50 @@ function ProfilePicture({
           fill
         />
       </div>
-
-      {isActive && (
-        <div className='border-background box bg-active-200 absolute right-[-8%] bottom-[8%] box-border size-[12px] rounded-full border-2' />
-      )}
-      {showLastSeenBadge && (
-        <div className='border-background box bg-active-100 absolute right-[-10%] bottom-[12%] rounded-full border-2 px-[3px] pb-[2px]'>
-          <TextSub className='text-[9px] leading-[12px] font-semibold'>
-            {lastSeenInMins}m
-          </TextSub>
-        </div>
-      )}
+      {children}
     </div>
   )
 }
 
 function ProfileTitle({ className, children }: Props) {
+  return (
+    <TextBody className={cn('text-center', className)}>{children}</TextBody>
+  )
+}
+function ProfileSub({ className, children }: Props) {
   return <TextSub className={cn('text-center', className)}>{children}</TextSub>
 }
 
-export { Profile, ProfilePicture, ProfileTitle }
+function ProfileBadgeActive({ className }: Props) {
+  return (
+    <div
+      className={cn(
+        'border-background box bg-active-200 absolute right-[-8%] bottom-[8%] box-border size-[12px] rounded-full border-2',
+        className
+      )}
+    />
+  )
+}
+function ProfileBadgeLastSeen({ className, children }: Props) {
+  return (
+    <div
+      className={cn(
+        'border-background box bg-active-100 absolute right-[-20%] bottom-[12%] rounded-full border-2 px-[3px] pb-[2px]',
+        className
+      )}
+    >
+      <TextSub className='text-foreground text-[9px] leading-[12px] font-semibold'>
+        {children}
+      </TextSub>
+    </div>
+  )
+}
+
+export {
+  Profile,
+  ProfilePicture,
+  ProfileTitle,
+  ProfileSub,
+  ProfileBadgeActive,
+  ProfileBadgeLastSeen
+}

@@ -5,21 +5,22 @@ import {
   InboxTitle,
   InboxMessageContainer,
   InboxMessage,
-  InboxMessageImage,
   InboxMessageTitle,
   InboxMessageSub,
-  InboxMessageTextContainer
+  InboxMessageTextContainer,
+  InboxMessageProfilePicture,
+  InboxMessageProfileBadgeActive
 } from '@/components/inbox'
 
 const Message = function () {
   return (
     <InboxMessage>
-      <InboxMessageImage
+      <InboxMessageProfilePicture
         src='https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/activities-fun/10-great-small-dog-breeds/maltese-portrait.jpg?h=448&w=740&hash=B111F1998758CA0ED2442A4928D5105D'
         name='Stego Mike'
-        isActive={true}
-        lastSeenInMins={0}
-      />
+      >
+        <InboxMessageProfileBadgeActive />
+      </InboxMessageProfilePicture>
       <InboxMessageTextContainer>
         <InboxMessageTitle>Stego Mike</InboxMessageTitle>
         <InboxMessageSub>Stego sent a photo.•1h</InboxMessageSub>
@@ -27,7 +28,6 @@ const Message = function () {
     </InboxMessage>
   )
 }
-
 export default function Archived() {
   return (
     <Inbox>

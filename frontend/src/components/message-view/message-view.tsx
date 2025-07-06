@@ -1,9 +1,16 @@
 import React from 'react'
 import { TextBody, TextHeading, TextSub } from '../text'
 import { cn } from '@/lib/utils'
-import { ProfilePicture, ProfilePictureProps } from '../profile'
 import { Ellipsis, ImagePlus, Phone, Plus, ThumbsUp, Video } from 'lucide-react'
 import { Input } from '../ui/input'
+import {
+  ProfileBadgeActive,
+  ProfileBadgeLastSeen,
+  ProfilePicture,
+  ProfilePictureProps,
+  ProfileSub,
+  ProfileTitle
+} from '../profile'
 
 type Props = {
   className?: string
@@ -12,7 +19,12 @@ type Props = {
 
 function MessageViewHeader({ className, children }: Props) {
   return (
-    <div className={cn('flex flex-row justify-between border-b', className)}>
+    <div
+      className={cn(
+        'flex flex-row justify-between border-b px-[12px] pt-[12px] pb-[8px]',
+        className
+      )}
+    >
       {children}
     </div>
   )
@@ -26,21 +38,28 @@ function MessageViewProfileContainer({ className, children }: Props) {
 }
 function MessageViewProfilePicture({
   className,
+  children,
   src,
-  name,
-  isActive,
-  lastSeenInMins
+  name
 }: Props & ProfilePictureProps) {
   return (
-    <div className={cn('w-min', className)}>
-      <ProfilePicture
-        className='size-[36px]'
-        src={src}
-        name={name}
-        isActive={isActive}
-        lastSeenInMins={lastSeenInMins}
-      />
-    </div>
+    <ProfilePicture
+      className={cn('size-[36px]', className)}
+      src={src}
+      name={name}
+    >
+      {children}
+    </ProfilePicture>
+  )
+}
+function MessageViewProfileBadgeActive({ className }: Props) {
+  return <ProfileBadgeActive className={cn('', className)} />
+}
+function MessageViewProfileBadgeLastSeen({ className, children }: Props) {
+  return (
+    <ProfileBadgeLastSeen className={cn('', className)}>
+      {children}
+    </ProfileBadgeLastSeen>
   )
 }
 function MessageViewProfileTextContainer({ className, children }: Props) {
@@ -51,10 +70,10 @@ function MessageViewProfileTextContainer({ className, children }: Props) {
   )
 }
 function MessageViewProfileTitle({ className, children }: Props) {
-  return <TextBody className={cn('', className)}>{children}</TextBody>
+  return <ProfileTitle className={cn('', className)}>{children}</ProfileTitle>
 }
 function MessageViewProfileActiveStatus({ className, children }: Props) {
-  return <TextSub className={cn('', className)}>{children}</TextSub>
+  return <ProfileSub className={cn('', className)}>{children}</ProfileSub>
 }
 
 function MessageViewActionsContainer({ className, children }: Props) {
@@ -135,23 +154,34 @@ function MessageViewStartingBannerProfileContainer({
     </div>
   )
 }
+
 function MessageViewStartingBannerProfilePicture({
   className,
+  children,
   src,
-  name,
-  isActive,
-  lastSeenInMins
+  name
 }: Props & ProfilePictureProps) {
   return (
-    <div className={cn('w-min', className)}>
-      <ProfilePicture
-        className='size-[60px]'
-        src={src}
-        name={name}
-        isActive={isActive}
-        lastSeenInMins={lastSeenInMins}
-      />
-    </div>
+    <ProfilePicture
+      className={cn('size-[60px]', className)}
+      src={src}
+      name={name}
+    >
+      {children}
+    </ProfilePicture>
+  )
+}
+function MessageViewStartingBannerProfileBadgeActive({ className }: Props) {
+  return <ProfileBadgeActive className={cn('', className)} />
+}
+function MessageViewStartingBannerProfileBadgeLastSeen({
+  className,
+  children
+}: Props) {
+  return (
+    <ProfileBadgeLastSeen className={cn('', className)}>
+      {children}
+    </ProfileBadgeLastSeen>
   )
 }
 function MessageViewStartingBannerProfileTitle({ className, children }: Props) {
@@ -292,6 +322,8 @@ export {
   MessageViewHeader,
   MessageViewProfileContainer,
   MessageViewProfilePicture,
+  MessageViewProfileBadgeActive,
+  MessageViewProfileBadgeLastSeen,
   MessageViewProfileTextContainer,
   MessageViewProfileActiveStatus,
   MessageViewProfileTitle,
@@ -302,6 +334,8 @@ export {
   MessageViewStartingBanner,
   MessageViewStartingBannerProfileContainer,
   MessageViewStartingBannerProfilePicture,
+  MessageViewStartingBannerProfileBadgeActive,
+  MessageViewStartingBannerProfileBadgeLastSeen,
   MessageViewStartingBannerProfileTitle,
   MessageViewStartingBannerWarningContainer,
   MessageViewStartingBannerWarningTitle,

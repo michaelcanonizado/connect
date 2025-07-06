@@ -1,9 +1,16 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
-import { TextBody, TextHeading, TextSub } from '@/components/text'
+import { TextHeading, TextSub } from '@/components/text'
 import { Search, SquarePen } from 'lucide-react'
 import { Input } from '../ui/input'
-import { ProfilePicture, ProfilePictureProps } from '../profile'
+import {
+  ProfileBadgeActive,
+  ProfileBadgeLastSeen,
+  ProfilePicture,
+  ProfilePictureProps,
+  ProfileSub,
+  ProfileTitle
+} from '../profile'
 import { Card } from '../ui/card'
 import { Tabs } from '../ui/tabs'
 import { TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
@@ -143,23 +150,26 @@ function InboxMessage({ className, children }: Props) {
     </Card>
   )
 }
-function InboxMessageImage({
+function InboxMessageProfilePicture({
   className,
+  children,
   src,
-  name,
-  isActive,
-  lastSeenInMins
+  name
 }: Props & ProfilePictureProps) {
   return (
-    <div className={cn('w-min', className)}>
-      <ProfilePicture
-        className=''
-        src={src}
-        name={name}
-        isActive={isActive}
-        lastSeenInMins={lastSeenInMins}
-      />
-    </div>
+    <ProfilePicture className={cn('', className)} src={src} name={name}>
+      {children}
+    </ProfilePicture>
+  )
+}
+function InboxMessageProfileBadgeActive({ className }: Props) {
+  return <ProfileBadgeActive className={cn('', className)} />
+}
+function InboxMessageProfileBadgeLastSeen({ className, children }: Props) {
+  return (
+    <ProfileBadgeLastSeen className={cn('', className)}>
+      {children}
+    </ProfileBadgeLastSeen>
   )
 }
 function InboxMessageTextContainer({ className, children }: Props) {
@@ -170,10 +180,16 @@ function InboxMessageTextContainer({ className, children }: Props) {
   )
 }
 function InboxMessageTitle({ className, children }: Props) {
-  return <TextBody className={cn('', className)}>{children}</TextBody>
+  return (
+    <ProfileTitle className={cn('text-start', className)}>
+      {children}
+    </ProfileTitle>
+  )
 }
 function InboxMessageSub({ className, children }: Props) {
-  return <TextSub className={cn('', className)}>{children}</TextSub>
+  return (
+    <ProfileSub className={cn('text-start', className)}>{children}</ProfileSub>
+  )
 }
 
 export {
@@ -189,7 +205,9 @@ export {
   InboxTabsContent,
   InboxMessageContainer,
   InboxMessage,
-  InboxMessageImage,
+  InboxMessageProfilePicture,
+  InboxMessageProfileBadgeActive,
+  InboxMessageProfileBadgeLastSeen,
   InboxMessageTextContainer,
   InboxMessageTitle,
   InboxMessageSub

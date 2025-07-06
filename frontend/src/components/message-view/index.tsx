@@ -1,12 +1,11 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { useMessageView } from '@/store/message-view'
+// import { useMessageView } from '@/store/message-view'
 import {
   MessageViewProfileActiveStatus,
   MessageViewHeader,
   MessageViewProfileTextContainer,
-  MessageViewProfilePicture,
   MessageViewProfileTitle,
   MessageViewProfileContainer,
   MessageViewActionsContainer,
@@ -16,7 +15,6 @@ import {
   MessageViewStartingBanner,
   MessageViewStartingBannerProfileContainer,
   MessageViewStartingBannerWarningContainer,
-  MessageViewStartingBannerProfilePicture,
   MessageViewStartingBannerProfileTitle,
   MessageViewStartingBannerWarningTitle,
   MessageViewStartingBannerWarningSub,
@@ -26,7 +24,11 @@ import {
   MessageViewChatActionsFile,
   MessageViewChatActionsInput,
   MessageViewChatActionsLike,
-  MessageViewChatPill
+  MessageViewChatPill,
+  MessageViewProfilePicture,
+  MessageViewProfileBadgeActive,
+  MessageViewStartingBannerProfilePicture,
+  MessageViewStartingBannerProfileBadgeActive
 } from './message-view'
 
 type Props = {
@@ -35,14 +37,15 @@ type Props = {
 
 function Header() {
   return (
-    <MessageViewHeader className='px-[12px] pt-[12px] pb-[8px]'>
+    <MessageViewHeader>
       <MessageViewProfileContainer>
         <MessageViewProfilePicture
           src='https://www.wnct.com/wp-content/uploads/sites/99/2022/07/Cat.jpg?w=2560&h=1440&crop=1'
-          name='Jake'
-          isActive={true}
-          lastSeenInMins={0}
-        />
+          name='Stego Mike'
+        >
+          <MessageViewProfileBadgeActive />
+        </MessageViewProfilePicture>
+
         <MessageViewProfileTextContainer>
           <MessageViewProfileTitle>Mic Mic</MessageViewProfileTitle>
           <MessageViewProfileActiveStatus>
@@ -64,11 +67,13 @@ function StartingBanner() {
     <MessageViewStartingBanner>
       <MessageViewStartingBannerProfileContainer>
         <MessageViewStartingBannerProfilePicture
+          className=''
           src='https://www.wnct.com/wp-content/uploads/sites/99/2022/07/Cat.jpg?w=2560&h=1440&crop=1'
-          name='Jake'
-          isActive={true}
-          lastSeenInMins={0}
-        />
+          name='Stego Mike'
+        >
+          <MessageViewStartingBannerProfileBadgeActive />
+        </MessageViewStartingBannerProfilePicture>
+
         <MessageViewStartingBannerProfileTitle>
           Mic Mic
         </MessageViewStartingBannerProfileTitle>
@@ -212,13 +217,14 @@ function Chats() {
 }
 
 export default function MessageView({ className }: Props) {
-  const { isActive, setIsActive } = useMessageView(state => state)
+  // const { isActive, setIsActive } = useMessageView(state => state)
 
   return (
     <div className={cn('flex grow flex-col', className)}>
       <Header />
       <MessageViewChatContainer>
         <StartingBanner />
+        {/* Chats will be injected here */}
         <Chats />
       </MessageViewChatContainer>
       <MessageViewChatActionsContainer>
