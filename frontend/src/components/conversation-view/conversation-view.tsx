@@ -26,7 +26,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-function MessageViewHeader({ className, children }: Props) {
+function ConversationViewHeader({ className, children }: Props) {
   return (
     <div
       className={cn(
@@ -38,14 +38,14 @@ function MessageViewHeader({ className, children }: Props) {
     </div>
   )
 }
-function MessageViewProfileContainer({ className, children }: Props) {
+function ConversationViewProfileContainer({ className, children }: Props) {
   return (
     <div className={cn('flex flex-row justify-start gap-[12px]', className)}>
       {children}
     </div>
   )
 }
-function MessageViewProfileBack({
+function ConversationViewProfileBack({
   className,
   onClick
 }: Props & { onClick?: React.MouseEventHandler<HTMLButtonElement> }) {
@@ -61,7 +61,7 @@ function MessageViewProfileBack({
     </Button>
   )
 }
-function MessageViewProfilePicture({
+function ConversationViewProfilePicture({
   className,
   children,
   src,
@@ -77,38 +77,38 @@ function MessageViewProfilePicture({
     </ProfilePicture>
   )
 }
-function MessageViewProfileBadgeActive({ className }: Props) {
+function ConversationViewProfileBadgeActive({ className }: Props) {
   return <ProfileBadgeActive className={cn('', className)} />
 }
-function MessageViewProfileBadgeLastSeen({ className, children }: Props) {
+function ConversationViewProfileBadgeLastSeen({ className, children }: Props) {
   return (
     <ProfileBadgeLastSeen className={cn('', className)}>
       {children}
     </ProfileBadgeLastSeen>
   )
 }
-function MessageViewProfileTextContainer({ className, children }: Props) {
+function ConversationViewProfileTextContainer({ className, children }: Props) {
   return (
     <div className={cn('flex flex-col items-start justify-center', className)}>
       {children}
     </div>
   )
 }
-function MessageViewProfileTitle({ className, children }: Props) {
+function ConversationViewProfileTitle({ className, children }: Props) {
   return <ProfileTitle className={cn('', className)}>{children}</ProfileTitle>
 }
-function MessageViewProfileActiveStatus({ className, children }: Props) {
+function ConversationViewProfileActiveStatus({ className, children }: Props) {
   return <ProfileSub className={cn('', className)}>{children}</ProfileSub>
 }
 
-function MessageViewActionsContainer({ className, children }: Props) {
+function ConversationViewActionsContainer({ className, children }: Props) {
   return (
     <div className={cn('flex flex-row items-center gap-[10px]', className)}>
       {children}
     </div>
   )
 }
-function MessageViewActionsVoiceCall({ className }: Props) {
+function ConversationViewActionsVoiceCall({ className }: Props) {
   return (
     <div
       className={cn(
@@ -125,7 +125,7 @@ function MessageViewActionsVoiceCall({ className }: Props) {
     </div>
   )
 }
-function MessageViewActionsVideoCall({ className }: Props) {
+function ConversationViewActionsVideoCall({ className }: Props) {
   return (
     <div
       className={cn(
@@ -142,7 +142,7 @@ function MessageViewActionsVideoCall({ className }: Props) {
     </div>
   )
 }
-function MessageViewActionsConversationInformation({ className }: Props) {
+function ConversationViewActionsInformation({ className }: Props) {
   return (
     <div
       className={cn(
@@ -160,7 +160,7 @@ function MessageViewActionsConversationInformation({ className }: Props) {
   )
 }
 
-function MessageViewStartingBanner({ className, children }: Props) {
+function ConversationViewStartingBanner({ className, children }: Props) {
   return (
     <div
       className={cn('mt-10 mb-4 flex flex-col items-center gap-6', className)}
@@ -169,7 +169,7 @@ function MessageViewStartingBanner({ className, children }: Props) {
     </div>
   )
 }
-function MessageViewStartingBannerProfileContainer({
+function ConversationViewStartingBannerProfileContainer({
   className,
   children
 }: Props) {
@@ -180,7 +180,7 @@ function MessageViewStartingBannerProfileContainer({
   )
 }
 
-function MessageViewStartingBannerProfilePicture({
+function ConversationViewStartingBannerProfilePicture({
   className,
   children,
   src,
@@ -196,10 +196,12 @@ function MessageViewStartingBannerProfilePicture({
     </ProfilePicture>
   )
 }
-function MessageViewStartingBannerProfileBadgeActive({ className }: Props) {
+function ConversationViewStartingBannerProfileBadgeActive({
+  className
+}: Props) {
   return <ProfileBadgeActive className={cn('', className)} />
 }
-function MessageViewStartingBannerProfileBadgeLastSeen({
+function ConversationViewStartingBannerProfileBadgeLastSeen({
   className,
   children
 }: Props) {
@@ -209,14 +211,17 @@ function MessageViewStartingBannerProfileBadgeLastSeen({
     </ProfileBadgeLastSeen>
   )
 }
-function MessageViewStartingBannerProfileTitle({ className, children }: Props) {
+function ConversationViewStartingBannerProfileTitle({
+  className,
+  children
+}: Props) {
   return (
     <TextHeading className={cn('text-[17px] font-semibold', className)}>
       {children}
     </TextHeading>
   )
 }
-function MessageViewStartingBannerWarningContainer({
+function ConversationViewStartingBannerWarningContainer({
   className,
   children
 }: Props) {
@@ -231,25 +236,31 @@ function MessageViewStartingBannerWarningContainer({
     </div>
   )
 }
-function MessageViewStartingBannerWarningTitle({ className, children }: Props) {
+function ConversationViewStartingBannerWarningTitle({
+  className,
+  children
+}: Props) {
   return (
     <TextSub className={cn('text-foreground font-bold', className)}>
       {children}
     </TextSub>
   )
 }
-function MessageViewStartingBannerWarningSub({ className, children }: Props) {
+function ConversationViewStartingBannerWarningSub({
+  className,
+  children
+}: Props) {
   return <TextSub className={cn('', className)}>{children}</TextSub>
 }
 
-function MessageViewChatContainer({ className, children }: Props) {
+function ConversationViewChatContainer({ className, children }: Props) {
   return (
     <div className={cn('mb-2 grow overflow-y-auto px-4', className)}>
       <div className='flex h-0 flex-col gap-[2px]'>{children}</div>
     </div>
   )
 }
-function MessageViewChatPill({
+function ConversationViewChatPill({
   className,
   children,
   variant
@@ -275,7 +286,7 @@ function MessageViewChatPill({
   )
 }
 
-function MessageViewChatActionsContainer({ className, children }: Props) {
+function ConversationViewChatActionsContainer({ className, children }: Props) {
   return (
     <div
       className={cn('flex flex-row items-center gap-1 px-4 py-3', className)}
@@ -284,7 +295,7 @@ function MessageViewChatActionsContainer({ className, children }: Props) {
     </div>
   )
 }
-function MessageViewChatActionsInput({ className }: Props) {
+function ConversationViewChatActionsInput({ className }: Props) {
   return (
     <div
       className={cn(
@@ -296,7 +307,7 @@ function MessageViewChatActionsInput({ className }: Props) {
     </div>
   )
 }
-function MessageViewChatActionsMore({ className }: Props) {
+function ConversationViewChatActionsMore({ className }: Props) {
   return (
     <div
       className={cn(
@@ -313,7 +324,7 @@ function MessageViewChatActionsMore({ className }: Props) {
     </div>
   )
 }
-function MessageViewChatActionsFile({ className }: Props) {
+function ConversationViewChatActionsFile({ className }: Props) {
   return (
     <div
       className={cn(
@@ -325,7 +336,7 @@ function MessageViewChatActionsFile({ className }: Props) {
     </div>
   )
 }
-function MessageViewChatActionsLike({ className }: Props) {
+function ConversationViewChatActionsLike({ className }: Props) {
   return (
     <div
       className={cn(
@@ -344,33 +355,33 @@ function MessageViewChatActionsLike({ className }: Props) {
 }
 
 export {
-  MessageViewHeader,
-  MessageViewProfileContainer,
-  MessageViewProfileBack,
-  MessageViewProfilePicture,
-  MessageViewProfileBadgeActive,
-  MessageViewProfileBadgeLastSeen,
-  MessageViewProfileTextContainer,
-  MessageViewProfileActiveStatus,
-  MessageViewProfileTitle,
-  MessageViewActionsContainer,
-  MessageViewActionsConversationInformation,
-  MessageViewActionsVoiceCall,
-  MessageViewActionsVideoCall,
-  MessageViewStartingBanner,
-  MessageViewStartingBannerProfileContainer,
-  MessageViewStartingBannerProfilePicture,
-  MessageViewStartingBannerProfileBadgeActive,
-  MessageViewStartingBannerProfileBadgeLastSeen,
-  MessageViewStartingBannerProfileTitle,
-  MessageViewStartingBannerWarningContainer,
-  MessageViewStartingBannerWarningTitle,
-  MessageViewStartingBannerWarningSub,
-  MessageViewChatContainer,
-  MessageViewChatPill,
-  MessageViewChatActionsContainer,
-  MessageViewChatActionsInput,
-  MessageViewChatActionsMore,
-  MessageViewChatActionsFile,
-  MessageViewChatActionsLike
+  ConversationViewHeader,
+  ConversationViewProfileContainer,
+  ConversationViewProfileBack,
+  ConversationViewProfilePicture,
+  ConversationViewProfileBadgeActive,
+  ConversationViewProfileBadgeLastSeen,
+  ConversationViewProfileTextContainer,
+  ConversationViewProfileActiveStatus,
+  ConversationViewProfileTitle,
+  ConversationViewActionsContainer,
+  ConversationViewActionsInformation,
+  ConversationViewActionsVoiceCall,
+  ConversationViewActionsVideoCall,
+  ConversationViewStartingBanner,
+  ConversationViewStartingBannerProfileContainer,
+  ConversationViewStartingBannerProfilePicture,
+  ConversationViewStartingBannerProfileBadgeActive,
+  ConversationViewStartingBannerProfileBadgeLastSeen,
+  ConversationViewStartingBannerProfileTitle,
+  ConversationViewStartingBannerWarningContainer,
+  ConversationViewStartingBannerWarningTitle,
+  ConversationViewStartingBannerWarningSub,
+  ConversationViewChatContainer,
+  ConversationViewChatPill,
+  ConversationViewChatActionsContainer,
+  ConversationViewChatActionsInput,
+  ConversationViewChatActionsMore,
+  ConversationViewChatActionsFile,
+  ConversationViewChatActionsLike
 }

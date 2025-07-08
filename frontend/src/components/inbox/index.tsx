@@ -16,7 +16,7 @@ import {
 import { Card } from '../ui/card'
 import { Tabs } from '../ui/tabs'
 import { TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
-import { useMessageView } from '@/store/message-view'
+import { useConversationView } from '@/store/conversation-view'
 
 type Props = {
   className?: string
@@ -142,7 +142,7 @@ function InboxMessageContainer({ className, children }: Props) {
 }
 
 function InboxMessage({ className, children }: Props) {
-  const { setIsActive } = useMessageView(state => state)
+  const { setIsActive } = useConversationView(state => state)
 
   return (
     <Card

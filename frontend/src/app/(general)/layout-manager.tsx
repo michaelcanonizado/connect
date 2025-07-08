@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { useEffect } from 'react'
-import { useMessageView } from '@/store/message-view'
+import { useConversationView } from '@/store/conversation-view'
 import { cn } from '@/lib/utils'
-import MessageView from '@/components/message-view'
+import ConversationView from '@/components/conversation-view'
 import Sidebar from '@/components/sidebar'
 import { Card } from '@/components/ui/card'
 
@@ -14,9 +14,8 @@ type Props = {
 }
 
 export default function LayoutManager({ className, children }: Props) {
-  const { isActive: isMessageViewActive, setIsActive } = useMessageView(
-    state => state
-  )
+  const { isActive: isConversationViewActive, setIsActive } =
+    useConversationView(state => state)
 
   /*
   On small screens the inbox and message-view will toggle between
@@ -31,10 +30,10 @@ export default function LayoutManager({ className, children }: Props) {
   is the message-view active or not?
 
   A bug arises from this where if you were to click the back button on
-  message-view, it sets isMessageViewActive to false hiding it and 
+  message-view, it sets isConversationViewActive to false hiding it and 
   and showing the inbox. But what if you increase the window size after?
   The message-view will be hidden. So you have to force-set 
-  isMessageViewActive to true on larger screen sizes. This is done in 
+  isConversationViewActive to true on larger screen sizes. This is done in 
   the useEffect() below.
   */
   useEffect(() => {
@@ -72,7 +71,7 @@ export default function LayoutManager({ className, children }: Props) {
         <Card
           className={cn(
             'bg-background min-w-[300px] flex-[1_1_480px] pb-0 md:flex md:max-w-[480px]',
-            isMessageViewActive ? 'hidden' : ''
+            isConversationViewActive ? 'hidden' : ''
           )}
         >
           {children}
@@ -80,10 +79,10 @@ export default function LayoutManager({ className, children }: Props) {
         <Card
           className={cn(
             'bg-background custom:bg-red-500 flex-[1_1_960px] p-0',
-            isMessageViewActive ? '' : 'hidden'
+            isConversationViewActive ? '' : 'hidden'
           )}
         >
-          <MessageView />
+          <ConversationView />
         </Card>
       </div>
     </div>
