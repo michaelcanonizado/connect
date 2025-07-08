@@ -1,7 +1,15 @@
 import React from 'react'
 import { TextBody, TextHeading, TextSub } from '../text'
 import { cn } from '@/lib/utils'
-import { Ellipsis, ImagePlus, Phone, Plus, ThumbsUp, Video } from 'lucide-react'
+import {
+  ArrowLeft,
+  Ellipsis,
+  ImagePlus,
+  Phone,
+  Plus,
+  ThumbsUp,
+  Video
+} from 'lucide-react'
 import { Input } from '../ui/input'
 import {
   ProfileBadgeActive,
@@ -11,6 +19,7 @@ import {
   ProfileSub,
   ProfileTitle
 } from '../profile'
+import { Button } from '../ui/button'
 
 type Props = {
   className?: string
@@ -34,6 +43,22 @@ function MessageViewProfileContainer({ className, children }: Props) {
     <div className={cn('flex flex-row justify-start gap-[12px]', className)}>
       {children}
     </div>
+  )
+}
+function MessageViewProfileBack({
+  className,
+  onClick
+}: Props & { onClick?: React.MouseEventHandler<HTMLButtonElement> }) {
+  return (
+    <Button
+      className={cn(
+        'hover:bg-muted-100 aspect-square rounded-full bg-inherit hover:cursor-pointer',
+        className
+      )}
+      onClick={onClick}
+    >
+      <ArrowLeft strokeWidth={2.2} className='text-primary size-[20px]' />
+    </Button>
   )
 }
 function MessageViewProfilePicture({
@@ -321,6 +346,7 @@ function MessageViewChatActionsLike({ className }: Props) {
 export {
   MessageViewHeader,
   MessageViewProfileContainer,
+  MessageViewProfileBack,
   MessageViewProfilePicture,
   MessageViewProfileBadgeActive,
   MessageViewProfileBadgeLastSeen,

@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-// import { useMessageView } from '@/store/message-view'
+import { useMessageView } from '@/store/message-view'
 import {
   MessageViewProfileActiveStatus,
   MessageViewHeader,
@@ -28,7 +28,8 @@ import {
   MessageViewProfilePicture,
   MessageViewProfileBadgeActive,
   MessageViewStartingBannerProfilePicture,
-  MessageViewStartingBannerProfileBadgeActive
+  MessageViewStartingBannerProfileBadgeActive,
+  MessageViewProfileBack
 } from './message-view'
 
 type Props = {
@@ -36,9 +37,17 @@ type Props = {
 }
 
 function Header() {
+  const { setIsActive } = useMessageView(state => state)
+
   return (
     <MessageViewHeader>
       <MessageViewProfileContainer>
+        <MessageViewProfileBack
+          className='block md:hidden'
+          onClick={() => {
+            setIsActive(false)
+          }}
+        />
         <MessageViewProfilePicture
           src='https://www.wnct.com/wp-content/uploads/sites/99/2022/07/Cat.jpg?w=2560&h=1440&crop=1'
           name='Stego Mike'
@@ -217,8 +226,6 @@ function Chats() {
 }
 
 export default function MessageView({ className }: Props) {
-  // const { isActive, setIsActive } = useMessageView(state => state)
-
   return (
     <div className={cn('flex grow flex-col', className)}>
       <Header />

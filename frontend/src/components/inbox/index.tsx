@@ -1,3 +1,5 @@
+'use client'
+
 import { cn } from '@/lib/utils'
 import React from 'react'
 import { TextHeading, TextSub } from '@/components/text'
@@ -14,6 +16,7 @@ import {
 import { Card } from '../ui/card'
 import { Tabs } from '../ui/tabs'
 import { TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
+import { useMessageView } from '@/store/message-view'
 
 type Props = {
   className?: string
@@ -139,12 +142,17 @@ function InboxMessageContainer({ className, children }: Props) {
 }
 
 function InboxMessage({ className, children }: Props) {
+  const { setIsActive } = useMessageView(state => state)
+
   return (
     <Card
       className={cn(
         'hover:bg-muted-100 flex w-full flex-row gap-2 p-[10px] pb-[8px] hover:cursor-pointer',
         className
       )}
+      onClick={() => {
+        setIsActive(true)
+      }}
     >
       {children}
     </Card>
