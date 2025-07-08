@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { TextBody, TextHeading, TextSub } from '../text'
 import { cn } from '@/lib/utils'
@@ -20,6 +22,7 @@ import {
   ProfileTitle
 } from '../profile'
 import { Button } from '../ui/button'
+import { useConversationView } from '@/store/conversation-view'
 
 type Props = {
   className?: string
@@ -45,17 +48,18 @@ function ConversationViewProfileContainer({ className, children }: Props) {
     </div>
   )
 }
-function ConversationViewProfileBack({
-  className,
-  onClick
-}: Props & { onClick?: React.MouseEventHandler<HTMLButtonElement> }) {
+function ConversationViewProfileBack({ className }: Props) {
+  const { setIsActive } = useConversationView(state => state)
+
   return (
     <Button
       className={cn(
         'hover:bg-muted-100 aspect-square rounded-full bg-inherit hover:cursor-pointer',
         className
       )}
-      onClick={onClick}
+      onClick={() => {
+        setIsActive(false)
+      }}
     >
       <ArrowLeft strokeWidth={2.2} className='text-primary size-[20px]' />
     </Button>

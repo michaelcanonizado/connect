@@ -1,7 +1,6 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { useConversationView } from '@/store/conversation-view'
 import {
   ConversationViewProfileActiveStatus,
   ConversationViewHeader,
@@ -37,17 +36,10 @@ type Props = {
 }
 
 function Header() {
-  const { setIsActive } = useConversationView(state => state)
-
   return (
     <ConversationViewHeader>
       <ConversationViewProfileContainer>
-        <ConversationViewProfileBack
-          className='block md:hidden'
-          onClick={() => {
-            setIsActive(false)
-          }}
-        />
+        <ConversationViewProfileBack className='block md:hidden' />
         <ConversationViewProfilePicture
           src='https://www.wnct.com/wp-content/uploads/sites/99/2022/07/Cat.jpg?w=2560&h=1440&crop=1'
           name='Stego Mike'
