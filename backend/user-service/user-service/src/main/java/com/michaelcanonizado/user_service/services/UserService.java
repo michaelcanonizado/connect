@@ -34,7 +34,7 @@ public class UserService {
             return mapper.toResponseDTO(createdUser);
 
         } catch (DataIntegrityViolationException | PersistenceException e) {
-            throw new UserAlreadyExistException("User of username '" + userCreateDTO.username() + "' already exists");
+            throw new UserAlreadyExistException("User with username '" + userCreateDTO.username() + "' already exists");
         }
     }
 
@@ -51,9 +51,13 @@ public class UserService {
     }
 
     public UserResponseDTO update(UUID id, UserUpdateDTO userUpdateDTO) {
-        User targetUser = repository.findById(id).orElseThrow(()-> new UserNotFoundException("User being updated doesn't exist"));
-        mapper.updateFromUpdateDTO(targetUser, userUpdateDTO);
-        repository.save(targetUser);
-        return mapper.toResponseDTO(targetUser);
+        try {
+            User targetUser = repository.findById(id).orElseThrow(()-> new UserNotFoundException("User being updated doesn't exist"));
+            mapper.updateFromUpdateDTO(targetUser, userUpdateDTO);
+            repository.save(targetUser);
+            return mapper.toResponseDTO(targetUser);
+        } catch (DataIntegrityViolationException | PersistenceException e) {
+            throw new UserAlreadyExistException("User being updated with username of '" + userUpdateDTO.username() + "' already exists");
+        }
     }
 }
