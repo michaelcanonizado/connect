@@ -1,8 +1,12 @@
 package com.michaelcanonizado.user_service.services;
 
+import com.michaelcanonizado.user_service.dto.UserCreateDTO;
+import com.michaelcanonizado.user_service.dto.UserResponseDTO;
+import com.michaelcanonizado.user_service.dto.UserUpdateDTO;
 import com.michaelcanonizado.user_service.exceptions.UserAlreadyExistException;
 import com.michaelcanonizado.user_service.exceptions.UserNotCreatedException;
 import com.michaelcanonizado.user_service.exceptions.UserNotFoundException;
+import com.michaelcanonizado.user_service.mapper.UserMapper;
 import com.michaelcanonizado.user_service.models.User;
 import com.michaelcanonizado.user_service.repositories.UserRepository;
 import jakarta.persistence.PersistenceException;
@@ -18,17 +22,25 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public User create(User user) {
+    @Autowired
+    private UserMapper mapper;
+
+    public UserResponseDTO create(UserCreateDTO userCreateDTO) {
         try {
+
+            User user = mapper.fromCreateDTO(userCreateDTO);
             repository.save(user);
-            return repository.findById(user.getId()).orElseThrow(()-> new UserNotCreatedException("User not found after saving"));
+            User createdUser = repository.findById(user.getId()).orElseThrow(()-> new UserNotCreatedException("User not found after saving"));
+            return mapper.toResponseDTO(createdUser);
+
         } catch (DataIntegrityViolationException | PersistenceException e) {
-            throw new UserAlreadyExistException("User of username '" + user.getUsername() + "' already exists");
+            throw new UserAlreadyExistException("User of username '" + userCreateDTO.username() + "' already exists");
         }
     }
 
-    public User get(UUID id) {
-        return repository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
+    public UserResponseDTO get(UUID id) {
+        User foundUser = repository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return mapper.toResponseDTO(foundUser);
     }
 
     public void delete(UUID id) {
@@ -38,15 +50,10 @@ public class UserService {
         repository.deleteById(id);
     }
 
-    public User update(User user) {
-        User foundUser = repository.findById(user.getId()).orElseThrow(()-> new UserNotFoundException("User being updated doesn't exist"));
-
-        foundUser.setName(user.getName());
-        foundUser.setUsername(user.getUsername());
-        foundUser.setBio(user.getBio());
-        foundUser.setProfileUrl(user.getProfileUrl());
-        foundUser.setIsOnline(user.getIsOnline());
-        foundUser.setLastSeenAt(user.getLastSeenAt());
-        return repository.save(foundUser);
+    public UserResponseDTO update(UUID id, UserUpdateDTO userUpdateDTO) {
+        User targetUser = repository.findById(id).orElseThrow(()-> new UserNotFoundException("User being updated doesn't exist"));
+        mapper.updateFromUpdateDTO(targetUser, userUpdateDTO);
+        repository.save(targetUser);
+        return mapper.toResponseDTO(targetUser);
     }
 }

@@ -1,5 +1,8 @@
 package com.michaelcanonizado.user_service.controllers;
 
+import com.michaelcanonizado.user_service.dto.UserCreateDTO;
+import com.michaelcanonizado.user_service.dto.UserResponseDTO;
+import com.michaelcanonizado.user_service.dto.UserUpdateDTO;
 import com.michaelcanonizado.user_service.exceptions.InvalidRequestException;
 import com.michaelcanonizado.user_service.exceptions.UserNotFoundException;
 import com.michaelcanonizado.user_service.models.User;
@@ -19,24 +22,22 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/users")
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        User createdUser = userService.create(user);
+    public ResponseEntity<UserResponseDTO> addUser(@RequestBody UserCreateDTO userCreateDTO) {
+        UserResponseDTO createdUser = userService.create(userCreateDTO);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUser(@PathVariable UUID id) {
-        User foundUser = userService.get(id);
+    public ResponseEntity<UserResponseDTO> getUser(@PathVariable UUID id) {
+        UserResponseDTO foundUser = userService.get(id);
         return new ResponseEntity<>(foundUser, HttpStatus.OK);
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable UUID id, @RequestBody User user) {
-        if (!id.equals(user.getId())) {
-            throw new InvalidRequestException("URL id and body id doesn't match");
-        }
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @RequestBody UserUpdateDTO userUpdateDTO) {
+        System.out.println(userUpdateDTO);
 
-        User updatedUser = userService.update(user);
+        UserResponseDTO updatedUser = userService.update(id, userUpdateDTO);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
