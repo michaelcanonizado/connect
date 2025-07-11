@@ -3,12 +3,14 @@ package com.michaelcanonizado.user_service.models;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
 import java.util.UUID;
 
 @Entity
 @Table(name = "users")
+@EntityListeners(AuditingEntityListener.class)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -27,7 +29,7 @@ public class User {
     private Instant lastSeenAt;
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(updatable = false, nullable = false)
     private Instant createdAt;
     @LastModifiedDate
     private Instant updatedAt;
