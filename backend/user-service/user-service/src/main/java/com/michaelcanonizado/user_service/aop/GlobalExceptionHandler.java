@@ -16,58 +16,58 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserNotCreatedException.class)
     public ResponseEntity<ErrorResponse> handleUserNotCreated(UserNotCreatedException exception, HttpServletRequest request) {
-        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 
         ErrorResponse response = new ErrorResponse(
-                httpStatus.value(),
-                httpStatus.getReasonPhrase(),
+                status.value(),
+                status.getReasonPhrase(),
                 exception.getMessage(),
                 request.getRequestURI(),
                 request.getMethod()
         );
-        return ResponseEntity.status(httpStatus).body(response);
+        return ResponseEntity.status(status).body(response);
     }
 
     @ExceptionHandler(UserAlreadyExistException.class)
     public ResponseEntity<ErrorResponse> handleUserAlreadyExists(UserAlreadyExistException exception, HttpServletRequest request) {
-        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        HttpStatus status = HttpStatus.BAD_REQUEST;
 
         ErrorResponse response = new ErrorResponse(
-                httpStatus.value(),
-                httpStatus.getReasonPhrase(),
+                status.value(),
+                status.getReasonPhrase(),
                 exception.getMessage(),
                 request.getRequestURI(),
                 request.getMethod()
         );
-        return ResponseEntity.status(httpStatus).body(response);
+        return ResponseEntity.status(status).body(response);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleUserNotFound(UserNotFoundException exception, HttpServletRequest request) {
-        HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+        HttpStatus status = HttpStatus.NOT_FOUND;
 
         ErrorResponse response = new ErrorResponse(
-                httpStatus.value(),
-                httpStatus.getReasonPhrase(),
+                status.value(),
+                status.getReasonPhrase(),
                 exception.getMessage(),
                 request.getRequestURI(),
                 request.getMethod()
         );
-        return ResponseEntity.status(httpStatus).body(response);
+        return ResponseEntity.status(status).body(response);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ErrorResponse> handleArguementTypeMismatch(MethodArgumentTypeMismatchException exception, HttpServletRequest request) {
-        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        HttpStatus status = HttpStatus.BAD_REQUEST;
 
         ErrorResponse response = new ErrorResponse(
-                httpStatus.value(),
-                httpStatus.getReasonPhrase(),
+                status.value(),
+                status.getReasonPhrase(),
                 "Provided argument doesn't match expected type",
                 request.getRequestURI(),
                 request.getMethod()
         );
 
-        return ResponseEntity.status(httpStatus).body(response);
+        return ResponseEntity.status(status).body(response);
     }
 }
