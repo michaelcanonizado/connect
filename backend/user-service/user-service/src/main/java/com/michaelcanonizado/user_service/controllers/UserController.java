@@ -28,4 +28,10 @@ public class UserController {
         User foundUser = userService.get(id);
         return new ResponseEntity<>(foundUser, HttpStatus.OK);
     }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
+        userService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

@@ -30,4 +30,11 @@ public class UserService {
     public User get(UUID id) {
         return repository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
     }
+
+    public void delete(UUID id) {
+        if (!repository.existsById(id)) {
+            throw new UserNotFoundException("User being deleted doesn't exist");
+        }
+        repository.deleteById(id);
+    }
 }
