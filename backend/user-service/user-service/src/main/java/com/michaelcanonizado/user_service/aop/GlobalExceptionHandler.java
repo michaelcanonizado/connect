@@ -22,8 +22,7 @@ public class GlobalExceptionHandler {
                 status.value(),
                 status.getReasonPhrase(),
                 exception.getMessage(),
-                request.getRequestURI(),
-                request.getMethod()
+                request.getRequestURI()
         );
         return ResponseEntity.status(status).body(response);
     }
@@ -36,8 +35,7 @@ public class GlobalExceptionHandler {
                 status.value(),
                 status.getReasonPhrase(),
                 exception.getMessage(),
-                request.getRequestURI(),
-                request.getMethod()
+                request.getRequestURI()
         );
         return ResponseEntity.status(status).body(response);
     }
@@ -50,8 +48,7 @@ public class GlobalExceptionHandler {
                 status.value(),
                 status.getReasonPhrase(),
                 exception.getMessage(),
-                request.getRequestURI(),
-                request.getMethod()
+                request.getRequestURI()
         );
         return ResponseEntity.status(status).body(response);
     }
@@ -64,8 +61,7 @@ public class GlobalExceptionHandler {
                 status.value(),
                 status.getReasonPhrase(),
                 "Provided argument doesn't match expected type",
-                request.getRequestURI(),
-                request.getMethod()
+                request.getRequestURI()
         );
 
         return ResponseEntity.status(status).body(response);
