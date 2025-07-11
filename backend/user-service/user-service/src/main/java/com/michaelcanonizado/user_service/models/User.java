@@ -66,7 +66,7 @@ public class User {
         return profileUrl;
     }
 
-    public boolean isOnline() {
+    public boolean getIsOnline() {
         return isOnline;
     }
 
@@ -98,7 +98,7 @@ public class User {
         this.profileUrl = profileUrl;
     }
 
-    public void setOnline(boolean online) {
+    public void setIsOnline(boolean online) {
         isOnline = online;
     }
 

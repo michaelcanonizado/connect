@@ -1,5 +1,6 @@
 package com.michaelcanonizado.user_service.controllers;
 
+import com.michaelcanonizado.user_service.exceptions.InvalidRequestException;
 import com.michaelcanonizado.user_service.exceptions.UserNotFoundException;
 import com.michaelcanonizado.user_service.models.User;
 import com.michaelcanonizado.user_service.services.UserService;
@@ -27,6 +28,16 @@ public class UserController {
     public ResponseEntity<User> getUser(@PathVariable UUID id) {
         User foundUser = userService.get(id);
         return new ResponseEntity<>(foundUser, HttpStatus.OK);
+    }
+
+    @PutMapping("/users/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable UUID id, @RequestBody User user) {
+        if (!id.equals(user.getId())) {
+            throw new InvalidRequestException("URL id and body id doesn't match");
+        }
+
+        User updatedUser = userService.update(user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/users/{id}")

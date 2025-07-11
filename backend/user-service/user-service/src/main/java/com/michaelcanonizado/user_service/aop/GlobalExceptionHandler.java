@@ -1,5 +1,6 @@
 package com.michaelcanonizado.user_service.aop;
 
+import com.michaelcanonizado.user_service.exceptions.InvalidRequestException;
 import com.michaelcanonizado.user_service.exceptions.UserAlreadyExistException;
 import com.michaelcanonizado.user_service.exceptions.UserNotCreatedException;
 import com.michaelcanonizado.user_service.exceptions.UserNotFoundException;
@@ -63,7 +64,19 @@ public class GlobalExceptionHandler {
                 "Provided argument doesn't match expected type",
                 request.getRequestURI()
         );
+        return ResponseEntity.status(status).body(response);
+    }
 
+    @ExceptionHandler(InvalidRequestException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidRequest(InvalidRequestException exception, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        ErrorResponse response = new ErrorResponse(
+                status.value(),
+                status.getReasonPhrase(),
+                exception.getMessage(),
+                request.getRequestURI()
+        );
         return ResponseEntity.status(status).body(response);
     }
 }

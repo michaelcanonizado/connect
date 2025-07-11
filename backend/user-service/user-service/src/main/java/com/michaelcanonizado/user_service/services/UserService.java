@@ -37,4 +37,16 @@ public class UserService {
         }
         repository.deleteById(id);
     }
+
+    public User update(User user) {
+        User foundUser = repository.findById(user.getId()).orElseThrow(()-> new UserNotFoundException("User being updated doesn't exist"));
+
+        foundUser.setName(user.getName());
+        foundUser.setUsername(user.getUsername());
+        foundUser.setBio(user.getBio());
+        foundUser.setProfileUrl(user.getProfileUrl());
+        foundUser.setIsOnline(user.getIsOnline());
+        foundUser.setLastSeenAt(user.getLastSeenAt());
+        return repository.save(foundUser);
+    }
 }
