@@ -1,0 +1,7 @@
+8080: api-gateway
+8081: keycloak
+8761: service-registry
+8100: user-service
+8200: some-other-service
+...
+8900: some-other-service
