@@ -14,11 +14,7 @@ public class SecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) throws Exception {
         http
                 .csrf(customizer -> customizer.disable())
-                .authorizeExchange(exchange -> exchange
-                        .pathMatchers("/eureka/**")
-                        .permitAll()
-                        .anyExchange()
-                        .authenticated())
+                .authorizeExchange(exchange -> exchange.anyExchange().authenticated())
                 .oauth2ResourceServer(oath2 -> oath2.jwt(Customizer.withDefaults()));
         return http.build();
     }
