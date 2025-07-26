@@ -1,8 +1,8 @@
 import React from 'react'
 import { TextBody, TextDisplay } from '@/components/text'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 function GraphicsCard({ className }: { className: string }) {
   return (
@@ -45,20 +45,11 @@ export default function Home() {
             </div>
           </div>
           <div className=''>
-            <Button
-              variant='outline'
-              className='border-primary h-min w-min px-[60px] py-[8px] hover:cursor-pointer'
-            >
-              <div className='relative size-[24px]'>
-                <Image
-                  className='object-contain object-center'
-                  src='icons/google.svg'
-                  alt='Sign in with Google'
-                  fill
-                />
-              </div>
-              <TextBody>Sign in with Google</TextBody>
-            </Button>
+            <Link href='/login'>
+              <Button className='border-primary h-min w-min px-[60px] py-[8px] hover:cursor-pointer'>
+                <TextBody>Get Started</TextBody>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
