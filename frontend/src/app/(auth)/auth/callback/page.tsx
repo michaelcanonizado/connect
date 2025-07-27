@@ -1,11 +1,11 @@
 'use client'
 
-import { useKeycloak } from '@/store/keycloak'
+import { useAuthentication } from '@/store/authentication'
 import React from 'react'
 
 function Callback() {
-  const keycloak = useKeycloak(state => state.keycloak)
-  const token = keycloak?.token
+  const provider = useAuthentication(state => state.provider)
+  const token = provider?.token
 
   return (
     <div className='flex flex-col'>

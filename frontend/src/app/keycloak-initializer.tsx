@@ -1,6 +1,6 @@
 'use client'
 
-import { useKeycloak } from '@/store/keycloak'
+import { useAuthentication } from '@/store/authentication'
 import React, { useEffect } from 'react'
 
 type Props = {
@@ -8,10 +8,12 @@ type Props = {
 }
 
 export default function KeycloakInitializer({ children }: Props) {
-  const initializeKeycloak = useKeycloak(state => state.initializeKeycloak)
+  const initializeProvider = useAuthentication(
+    state => state.initializeProvider
+  )
 
   useEffect(() => {
-    initializeKeycloak()
+    initializeProvider()
   }, [])
 
   return <div>{children}</div>

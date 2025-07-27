@@ -4,7 +4,7 @@ import React from 'react'
 import { TextBody } from '../text'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
-import { useKeycloak } from '@/store/keycloak'
+import { useAuthentication } from '@/store/authentication'
 
 type Props = {
   children: React.ReactNode
@@ -12,7 +12,7 @@ type Props = {
 }
 
 export function LoginButton({ className, children }: Props) {
-  const { login } = useKeycloak(state => state)
+  const { login } = useAuthentication(state => state)
 
   return (
     <Button

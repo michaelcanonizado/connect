@@ -1,16 +1,16 @@
 import Keycloak from 'keycloak-js'
 import { create } from 'zustand'
 
-type KeycloakState = {
-  keycloak: Keycloak | null
+type AuthenticationState = {
+  provider: Keycloak | null
   isInitialized: boolean
-  initializeKeycloak: () => void
+  initializeProvider: () => void
   login: () => void
   logout: () => void
 }
 
-export const useKeycloak = create<KeycloakState>((set, get) => {
-  const initializeKeycloak = () => {
+export const useAuthentication = create<AuthenticationState>((set, get) => {
+  const initializeProvider = async () => {
     if (get().isInitialized) {
       console.error('Keycloak is already initialized!')
       return
@@ -36,24 +36,24 @@ export const useKeycloak = create<KeycloakState>((set, get) => {
         } else {
           console.log('Not authenticated')
         }
-        set({ keycloak: keycloak, isInitialized: true })
+        set({ provider: keycloak, isInitialized: true })
       })
       .catch(error => {
-        set({ keycloak: null, isInitialized: false })
-        console.error('Keycloak initialization error! ', error)
+        set({ provider: null, isInitialized: false })
+        console.error('Keycloak initialization error!', error)
       })
   }
 
   return {
-    keycloak: null,
+    provider: null,
     isInitialized: false,
-    initializeKeycloak,
+    initializeProvider,
     login: () => {
-      const keycloak = get().keycloak
+      const keycloak = get().provider
       keycloak?.login({ redirectUri: 'http://localhost:3000/auth/callback' })
     },
     logout: () => {
-      const keycloak = get().keycloak
+      const keycloak = get().provider
       keycloak?.logout({ redirectUri: 'http://localhost:3000' })
     }
   }
