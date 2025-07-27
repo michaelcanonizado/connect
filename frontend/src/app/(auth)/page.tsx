@@ -1,8 +1,7 @@
 import React from 'react'
-import { TextBody, TextDisplay } from '@/components/text'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
+import { TextBody, TextDisplay } from '@/components/text'
+import { LoginButton } from '@/components/auth'
 
 function GraphicsCard({ className }: { className: string }) {
   return (
@@ -45,11 +44,7 @@ export default function Home() {
             </div>
           </div>
           <div className=''>
-            <Link href='/login'>
-              <Button className='border-primary h-min w-min px-[60px] py-[8px] hover:cursor-pointer'>
-                <TextBody>Get Started</TextBody>
-              </Button>
-            </Link>
+            <LoginButton>Get Started</LoginButton>
           </div>
         </div>
       </div>
