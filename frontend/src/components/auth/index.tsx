@@ -14,13 +14,18 @@ type Props = {
 export function LoginButton({ className, children }: Props) {
   const { login } = useAuthentication(state => state)
 
+  const handleLogin = () => {
+    console.log('Login button clicked.')
+    login()
+  }
+
   return (
     <Button
       className={cn(
         'border-primary h-min w-min px-[60px] py-[8px] hover:cursor-pointer',
         className
       )}
-      onClick={login}
+      onClick={handleLogin}
     >
       <TextBody>{children}</TextBody>
     </Button>

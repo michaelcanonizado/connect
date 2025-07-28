@@ -1,3 +1,4 @@
+import keycloak from '@/lib/keycloak'
 import Keycloak from 'keycloak-js'
 import { create } from 'zustand'
 
@@ -10,51 +11,73 @@ type AuthenticationState = {
 }
 
 export const useAuthentication = create<AuthenticationState>((set, get) => {
-  const initializeProvider = async () => {
-    if (get().isInitialized) {
-      console.error('Keycloak is already initialized!')
-      return
-    }
-
-    const keycloak = new Keycloak({
-      url: 'http://localhost:8081',
-      realm: 'connect',
-      clientId: 'frontend-web'
-    })
-
-    keycloak
-      .init({
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/silent-check-sso.html',
-        checkLoginIframe: true,
-        pkceMethod: 'S256'
-      })
-      .then(authenticated => {
-        if (authenticated) {
-          console.log('Authenticated', keycloak)
-        } else {
-          console.log('Not authenticated')
-        }
-        set({ provider: keycloak, isInitialized: true })
-      })
-      .catch(error => {
-        set({ provider: null, isInitialized: false })
-        console.error('Keycloak initialization error!', error)
-      })
-  }
-
   return {
     provider: null,
+
     isInitialized: false,
-    initializeProvider,
-    login: () => {
-      const keycloak = get().provider
-      keycloak?.login({ redirectUri: 'http://localhost:3000/auth/callback' })
+
+    initializeProvider: async () => {
+      const storedToken = localStorage.getItem('kc_token')
+      const storedRefreshToken = localStorage.getItem('kc_refresh_token')
+
+      const authenticated = await keycloak
+        .init({
+          onLoad: 'check-sso',
+          silentCheckSsoRedirectUri:
+            window.location.origin + '/silent-check-sso.html',
+          checkLoginIframe: true,
+          pkceMethod: 'S256',
+          token: storedToken ? storedToken : undefined,
+          refreshToken: storedRefreshToken ? storedRefreshToken : undefined
+        })
+        .catch(error => {
+          set({ provider: null, isInitialized: false })
+          console.error('Keycloak initialization error!', error)
+        })
+
+      set({ provider: keycloak, isInitialized: true })
+
+      if (!authenticated) {
+        console.log('Not Authenticated!', keycloak)
+        return
+      }
+
+      console.log('Authenticated! ', keycloak)
+      // store tokens to persist them
+      localStorage.setItem('kc_token', keycloak.token!)
+      localStorage.setItem('kc_refresh_token', keycloak.refreshToken!)
+
+      // update on token refresh
+      keycloak.onAuthRefreshSuccess = () => {
+        localStorage.setItem('kc_token', keycloak.token!)
+        localStorage.setItem('kc_refresh_token', keycloak.refreshToken!)
+      }
+
+      keycloak.onTokenExpired = () => {
+        keycloak.updateToken(30)
+      }
     },
+
+    login: () => {
+      const provider = get().provider
+
+      if (provider == null) {
+        console.log('Trying to login but no keycloak instance!')
+        return
+      }
+
+      provider.login({ redirectUri: 'http://localhost:3000/login/callback' })
+    },
+
     logout: () => {
-      const keycloak = get().provider
-      keycloak?.logout({ redirectUri: 'http://localhost:3000' })
+      const provider = get().provider
+
+      if (provider == null) {
+        console.log('Trying to login but no keycloak instance!')
+        return
+      }
+
+      provider.logout({ redirectUri: 'http://localhost:3000' })
     }
   }
 })
