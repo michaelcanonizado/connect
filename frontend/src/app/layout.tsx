@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { fontCustom } from '@/styles/font'
 
 import '@/styles/globals.css'
-import KeycloakInitializer from './keycloak-initializer'
+// import KeycloakInitializer from './keycloak-initializer'
 
 export const metadata: Metadata = {
   title: 'Connect',
@@ -16,9 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${fontCustom.variable} antialiased`}>
-        <KeycloakInitializer>{children}</KeycloakInitializer>
-      </body>
+      <body className={`${fontCustom.variable} antialiased`}>{children}</body>
     </html>
   )
 }

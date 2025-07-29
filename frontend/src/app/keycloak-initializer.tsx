@@ -13,6 +13,7 @@ export default function KeycloakInitializer({ children }: Props) {
   )
 
   useEffect(() => {
+    console.log('Initializing provider on layout...')
     initializeProvider()
   }, [])
 
