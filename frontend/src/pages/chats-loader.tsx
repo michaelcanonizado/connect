@@ -40,7 +40,7 @@ export default function ChatsLoader() {
 		return () => {
 			isMounted = false;
 		};
-	});
+	}, []);
 
 	if (isLoading || !initialChatId) {
 		return <div>Loading...</div>;
