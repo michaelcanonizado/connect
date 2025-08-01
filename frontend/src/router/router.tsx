@@ -4,6 +4,7 @@ import Requests from '../pages/requests';
 import NotFound from '../pages/not-found';
 import ChatsLoader from '../pages/chats-loader';
 import Home from '../pages/home';
+import AppLayout from '@/layouts/app-layout';
 
 const router = createBrowserRouter([
 	{
@@ -11,16 +12,21 @@ const router = createBrowserRouter([
 		element: <Home />,
 	},
 	{
-		path: '/chats',
-		element: <ChatsLoader />,
-	},
-	{
-		path: '/chats/:chatId',
-		element: <Chats />,
-	},
-	{
-		path: '/requests',
-		element: <Requests />,
+		element: <AppLayout />,
+		children: [
+			{
+				path: '/chats',
+				element: <ChatsLoader />,
+			},
+			{
+				path: '/chats/:chatId',
+				element: <Chats />,
+			},
+			{
+				path: '/requests',
+				element: <Requests />,
+			},
+		],
 	},
 	{ path: '*', element: <NotFound /> },
 ]);
