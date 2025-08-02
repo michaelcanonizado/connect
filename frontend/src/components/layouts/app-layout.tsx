@@ -1,5 +1,6 @@
 import Logout from '@/features/authentication/components/logout';
 import { Outlet } from 'react-router-dom';
+import ConvoView from '../convo-view';
 
 export default function AppLayout() {
 	return (
@@ -13,7 +14,7 @@ export default function AppLayout() {
 			<div>
 				<Outlet />
 			</div>
-			<div className="">Convo view</div>
+			<ConvoView />
 		</div>
 	);
 }

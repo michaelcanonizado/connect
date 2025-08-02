@@ -46,5 +46,5 @@ export default function ChatsLoader() {
 		return <div>Loading...</div>;
 	}
 
-	return <Navigate to={`/chats/${initialChatId}`} />;
+	return <Navigate to={`app/chats/${initialChatId}`} />;
 }
