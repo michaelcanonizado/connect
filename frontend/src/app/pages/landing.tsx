@@ -3,7 +3,7 @@ import { useAuthentication } from '@/store/useAuthentication';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Home() {
+export default function Landing() {
 	const isAuthenticated = useAuthentication((state) => state.isAuthenticated);
 	const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export default function Home() {
 		<div className="h-screen grid place-items-center">
 			<div>
 				<div className="flex flex-col items-center gap-4">
-					<h1 className="text-lg">Home</h1>
+					<h1 className="text-lg">Landing Page</h1>
 				</div>
 				<Login>Get Started</Login>
 			</div>

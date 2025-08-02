@@ -1,5 +1,5 @@
 const paths = {
-	home: {
+	landing: {
 		path: '/',
 	},
 	authentication: {
