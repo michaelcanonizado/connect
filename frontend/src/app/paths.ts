@@ -17,13 +17,13 @@ const paths = {
 				build: (id: string | number) => `/chats/${id}`,
 			},
 		},
-		requested: {
+		requests: {
 			root: {
-				path: '/requested',
+				path: '/requests',
 			},
 			id: {
-				path: '/requested/:id',
-				build: (id: string | number) => `/requested/${id}`,
+				path: '/requests/:id',
+				build: (id: string | number) => `/requests/${id}`,
 			},
 		},
 		archived: {

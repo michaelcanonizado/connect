@@ -1,3 +1,4 @@
+import paths from '@/app/paths';
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ type Chat = {
 	id: string;
 };
 
-export default function ChatsLoader() {
+export default function ChatsRedirector() {
 	const [isLoading, setIsLoading] = useState(true);
 	const [initialChatId, setInitialChatId] = useState<string | null>(null);
 
@@ -46,5 +47,5 @@ export default function ChatsLoader() {
 		return <div>Loading...</div>;
 	}
 
-	return <Navigate to={`app/chats/${initialChatId}`} />;
+	return <Navigate to={paths.app.chats.id.build(initialChatId)} />;
 }
