@@ -1,6 +1,7 @@
 import type Keycloak from 'keycloak-js';
 import keycloak from '@/features/authentication/lib/keycloak';
 import { create } from 'zustand';
+import paths from '@/app/paths';
 
 type AuthenticationState = {
 	provider: Keycloak | null;
@@ -51,9 +52,9 @@ export const useAuthentication = create<AuthenticationState>((set, get) => {
 				return;
 			}
 			provider.login({
-				redirectUri: `${
-					import.meta.env.VITE_FRONTEND_URL
-				}/authentication/callback`,
+				redirectUri: `${import.meta.env.VITE_FRONTEND_URL}${
+					paths.authentication.callback.path
+				}`,
 			});
 		},
 
