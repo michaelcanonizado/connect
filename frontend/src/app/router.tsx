@@ -8,14 +8,15 @@ import AppLayout from '@/components/layouts/app-layout';
 import { RouterProvider } from 'react-router-dom';
 import Callback from './pages/(authentication)/callback';
 import Protected from '@/features/authentication/components/protected';
+import paths from './paths';
 
 const router = createBrowserRouter([
 	{
-		path: '/',
+		path: paths.home.path,
 		element: <Home />,
 	},
 	{
-		path: '/authentication/callback',
+		path: paths.authentication.callback.path,
 		element: <Callback />,
 	},
 	{
@@ -26,15 +27,15 @@ const router = createBrowserRouter([
 		),
 		children: [
 			{
-				path: '/chats',
+				path: paths.app.chats.root.path,
 				element: <ChatsLoader />,
 			},
 			{
-				path: '/chats/:chatId',
+				path: paths.app.chats.id.path,
 				element: <Chats />,
 			},
 			{
-				path: '/requests',
+				path: paths.app.chats.id.path,
 				element: <Requests />,
 			},
 		],
