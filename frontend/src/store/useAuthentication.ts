@@ -64,7 +64,7 @@ export const useAuthentication = create<AuthenticationState>((set, get) => {
 				return;
 			}
 			provider.logout({
-				redirectUri: `${import.meta.env.VITE_FRONTEND_URL}`,
+				redirectUri: `${import.meta.env.VITE_FRONTEND_URL}/`,
 			});
 		},
 	};
