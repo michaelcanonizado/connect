@@ -14,6 +14,7 @@ const paths = {
 			},
 			id: {
 				path: '/chats/:id',
+				build: (id: string | number) => `/chats/${id}`,
 			},
 		},
 		requested: {
@@ -22,6 +23,7 @@ const paths = {
 			},
 			id: {
 				path: '/requested/:id',
+				build: (id: string | number) => `/requested/${id}`,
 			},
 		},
 		archived: {
@@ -30,6 +32,7 @@ const paths = {
 			},
 			id: {
 				path: '/archived/:id',
+				build: (id: string | number) => `/archived/${id}`,
 			},
 		},
 	},
