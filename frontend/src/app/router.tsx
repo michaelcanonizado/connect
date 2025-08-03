@@ -9,6 +9,7 @@ import paths from './paths';
 import ChatsRedirector from './pages/(user)/chats-redirector';
 import Landing from './pages/landing';
 import UserLayout from '@/app/layouts/user-layout';
+import Archived from './pages/(user)/archived';
 
 const router = createBrowserRouter([
 	{
@@ -41,6 +42,14 @@ const router = createBrowserRouter([
 			{
 				path: paths.user.requests.id.path,
 				element: <Requests />,
+			},
+			{
+				path: paths.user.archived.root.path,
+				element: <Archived />,
+			},
+			{
+				path: paths.user.archived.id.path,
+				element: <Archived />,
 			},
 		],
 	},
