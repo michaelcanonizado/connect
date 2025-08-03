@@ -51,7 +51,7 @@ export default function Sidebar({ className }: ComponentClassNameProp) {
 						<NavLink
 							className={({ isActive }) => {
 								return cn(
-									'rounded-lg p-[12px] hover:cursor-pointer ',
+									'rounded-lg p-[12px]',
 									isActive
 										? 'bg-muted-300 text-black'
 										: 'text-muted-400 hover:bg-muted-200'
