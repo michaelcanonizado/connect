@@ -1,29 +1,41 @@
 import { cn } from '@/lib/utils';
-import { MessageCircle, MessageCircleMore, Archive } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
-
+import {
+	MessageCircle,
+	MessageCircleMore,
+	Archive,
+	type LucideIcon,
+} from 'lucide-react';
+import { NavLink, useParams } from 'react-router-dom';
 import paths from '@/app/paths';
 import ProfileActions from './profile-actions';
 
-const navLinkGroup = [
+type Link = {
+	icon: LucideIcon;
+	title: string;
+	href: string;
+};
+
+const links: Link[] = [
 	{
-		icon: <MessageCircle width={18} strokeWidth={2.5} />,
+		icon: MessageCircle,
 		title: 'Chats',
 		href: paths.user.chats.root.path,
 	},
 	{
-		icon: <MessageCircleMore width={18} strokeWidth={2.5} />,
+		icon: MessageCircleMore,
 		title: 'Requests',
 		href: paths.user.requests.root.path,
 	},
 	{
-		icon: <Archive width={18} strokeWidth={2.5} />,
+		icon: Archive,
 		title: 'Archived',
 		href: paths.user.archived.root.path,
 	},
 ];
 
 export default function Sidebar({ className }: ComponentClassNameProp) {
+	const { id } = useParams();
+
 	return (
 		<div
 			className={cn(
@@ -32,7 +44,9 @@ export default function Sidebar({ className }: ComponentClassNameProp) {
 			)}
 		>
 			<div className="flex flex-col">
-				{navLinkGroup.map((link) => {
+				{links.map((link) => {
+					const finalizedPath = id ? `${link.href}/${id}` : link.href;
+
 					return (
 						<NavLink
 							className={({ isActive }) => {
@@ -44,10 +58,10 @@ export default function Sidebar({ className }: ComponentClassNameProp) {
 								);
 							}}
 							key={link.title}
-							to={link.href}
+							to={finalizedPath}
 							caseSensitive={true}
 						>
-							{link.icon}
+							<link.icon width={18} strokeWidth={2.5} />
 						</NavLink>
 					);
 				})}
