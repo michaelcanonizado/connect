@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: paths.user.chats.root.path,
-				element: <ChatsRedirector />,
+				element: <Chats />,
 			},
 			{
 				path: paths.user.chats.id.path,
