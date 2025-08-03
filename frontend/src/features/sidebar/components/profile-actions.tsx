@@ -7,21 +7,28 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ProfilePicture } from '@/components/profile';
 import { TextBody } from '@/components/text';
+import { useAuthentication } from '@/store/useAuthentication';
 import { LogOut, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const profileActionsGroup = [
-	{
-		icon: <User width={16} strokeWidth={2.5} />,
-		title: 'Profile',
-	},
-	{
-		icon: <LogOut width={16} strokeWidth={2.5} />,
-		title: 'Log out',
-	},
-];
-
 export default function ProfileActions() {
+	const logout = useAuthentication((state) => state.logout);
+
+	const profileActionsGroup = [
+		{
+			icon: <User width={16} strokeWidth={2.5} />,
+			title: 'Profile',
+			onClick: () => {},
+		},
+		{
+			icon: <LogOut width={16} strokeWidth={2.5} />,
+			title: 'Log out',
+			onClick: () => {
+				logout();
+			},
+		},
+	];
+
 	return (
 		<DropdownMenu>
 			<div className="flex h-full w-full flex-row items-center justify-center">
@@ -39,6 +46,7 @@ export default function ProfileActions() {
 						<div key={index}>
 							<DropdownMenuItem className="p-0">
 								<Button
+									onClick={link.onClick}
 									variant="link"
 									className="hover:bg-muted-100 flex h-full w-full flex-row items-center justify-start gap-3 px-2 py-1.5 hover:cursor-pointer text-inherit hover:no-underline"
 								>
