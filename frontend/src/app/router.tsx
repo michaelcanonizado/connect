@@ -8,7 +8,7 @@ import Protected from '@/features/authentication/components/protected';
 import paths from './paths';
 import ChatsRedirector from './pages/(user)/chats-redirector';
 import Landing from './pages/landing';
-import UserLayout from '@/components/layouts/user-layout';
+import UserLayout from '@/app/layouts/user-layout';
 
 const router = createBrowserRouter([
 	{

@@ -1,6 +1,6 @@
 import Logout from '@/features/authentication/components/logout';
 import { Outlet } from 'react-router-dom';
-import ConvoView from '../convo-view';
+import ConvoView from '../../components/convo-view';
 
 export default function UserLayout() {
 	return (
