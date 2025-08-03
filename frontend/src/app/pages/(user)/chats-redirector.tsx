@@ -47,5 +47,5 @@ export default function ChatsRedirector() {
 		return <div>Loading...</div>;
 	}
 
-	return <Navigate to={paths.app.chats.id.build(initialChatId)} />;
+	return <Navigate to={paths.user.chats.id.build(initialChatId)} />;
 }

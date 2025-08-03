@@ -7,7 +7,7 @@ const paths = {
 			path: '/authentication/callback',
 		},
 	},
-	app: {
+	user: {
 		chats: {
 			root: {
 				path: '/chats',

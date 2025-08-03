@@ -6,7 +6,7 @@ export default function Callback() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		navigate(paths.app.chats.root.path);
+		navigate(paths.user.chats.root.path);
 	}, []);
 
 	return <div>Logging you in...</div>;
