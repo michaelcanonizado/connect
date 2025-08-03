@@ -1,7 +1,5 @@
-import paths from '@/app/paths';
 import { useAuthentication } from '@/store/useAuthentication';
 import { useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Protected({ children }: ComponentChildrenProp) {
 	const isAuthenticated = useAuthentication((state) => state.isAuthenticated);
