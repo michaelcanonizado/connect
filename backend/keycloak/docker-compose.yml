@@ -52,7 +52,7 @@ services:
       postgres:
         condition: service_healthy
     volumes:
-      - ./providers:/opt/keycloak/providers
+      - ./custom-spi/target/custom-spi-1.0-SNAPSHOT.jar:/opt/keycloak/providers/custom-spi-1.0-SNAPSHOT.jar
     networks:
       - keycloak-network
 
