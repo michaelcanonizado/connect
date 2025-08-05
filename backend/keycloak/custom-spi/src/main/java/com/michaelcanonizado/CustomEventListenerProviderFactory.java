@@ -1,18 +1,17 @@
-package com.michaelcanonizado.providers.factories;
+package com.michaelcanonizado;
 
-import com.michaelcanonizado.providers.UserRegistrationProvider;
 import org.keycloak.Config;
 import org.keycloak.events.EventListenerProvider;
 import org.keycloak.events.EventListenerProviderFactory;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 
-public class UserRegistrationProviderFactory implements EventListenerProviderFactory {
-    private static final String PROVIDER_ID = "custom-user-registration";
+public class CustomEventListenerProviderFactory implements EventListenerProviderFactory {
+    private static final String PROVIDER_ID = "custom-event-listener";
 
     @Override
     public EventListenerProvider create(KeycloakSession keycloakSession) {
-        return new UserRegistrationProvider(keycloakSession);
+        return new CustomEventListenerProvider(keycloakSession);
     }
 
     @Override
