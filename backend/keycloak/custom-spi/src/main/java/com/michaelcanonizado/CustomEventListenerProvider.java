@@ -48,7 +48,7 @@ public class CustomEventListenerProvider implements EventListenerProvider {
             return;
         }
 
-        handler.handle(session, event);
+        handler.handle(tokenProvider, session, event);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CustomEventListenerProvider implements EventListenerProvider {
         String token = tokenProvider.getAccessToken();
         logger.info("GETTING TOKEN FROM HANDLE ADMIN: " + token);
 
-        handler.handle(session, adminEvent);
+        handler.handle(tokenProvider, session, adminEvent);
     }
 
     @Override

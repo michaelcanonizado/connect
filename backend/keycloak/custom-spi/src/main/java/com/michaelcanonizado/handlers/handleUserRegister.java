@@ -1,6 +1,7 @@
 package com.michaelcanonizado.handlers;
 
 import com.michaelcanonizado.CustomEventListenerProvider;
+import com.michaelcanonizado.TokenProvider;
 import org.keycloak.events.Event;
 import org.keycloak.events.admin.AdminEvent;
 import org.keycloak.models.KeycloakSession;
@@ -16,7 +17,7 @@ public class handleUserRegister implements Handler{
     private Logger logger = LoggerFactory.getLogger(CustomEventListenerProvider.class);
 
     @Override
-    public void handle(KeycloakSession session, Event event) {
+    public void handle(TokenProvider tokenProvider, KeycloakSession session, Event event) {
         String userId = event.getUserId();
         RealmModel realm = session.realms().getRealm(event.getRealmId());
         UserModel userModel = session.users().getUserById(realm, userId);
@@ -39,7 +40,7 @@ public class handleUserRegister implements Handler{
     }
 
     @Override
-    public void handle(KeycloakSession session, AdminEvent event) {
+    public void handle(TokenProvider tokenProvider, KeycloakSession session, AdminEvent event) {
         String resourcePath = event.getResourcePath();
         String userId = resourcePath != null && resourcePath.startsWith("users/") ?
                 resourcePath.substring("users/".length()) : "";
