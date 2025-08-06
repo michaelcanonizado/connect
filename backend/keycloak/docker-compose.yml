@@ -55,6 +55,8 @@ services:
       - ./custom-spi/target/custom-spi-1.0-SNAPSHOT.jar:/opt/keycloak/providers/custom-spi-1.0-SNAPSHOT.jar
     networks:
       - keycloak-network
+    env_file:
+      - ./custom-spi/.env
 
 volumes:
   postgres_data:
