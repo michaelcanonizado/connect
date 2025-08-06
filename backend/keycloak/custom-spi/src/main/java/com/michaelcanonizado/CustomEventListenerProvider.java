@@ -38,7 +38,7 @@ public class CustomEventListenerProvider implements EventListenerProvider {
     }
 
     @Override
-    // Non-Admin Events
+    /* Non-Admin Events */
     public void onEvent(Event event) {
         EventType type = event.getType();
         Handler handler = userHandlers.get(type);
@@ -52,7 +52,7 @@ public class CustomEventListenerProvider implements EventListenerProvider {
     }
 
     @Override
-    // Admin Events
+    /* Admin Events */
     public void onEvent(AdminEvent adminEvent, boolean includeRepresentation) {
         ResourceOperationKey key = new ResourceOperationKey(adminEvent.getResourceType(), adminEvent.getOperationType());
         Handler handler = adminHandlers.get(key);
