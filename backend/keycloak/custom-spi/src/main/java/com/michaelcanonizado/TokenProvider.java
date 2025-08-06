@@ -45,7 +45,11 @@ public class TokenProvider {
     }
 
     public String getAccessToken() {
-        logger.info("GETTING ACCESS TOKEN");
+        logger.info("GETTING ACCESS TOKEN...");
+        /* If a valid token exists, return immediately  */
+        if (accessToken != null && Instant.now().isBefore(expiresAt)) {
+            return accessToken;
+        }
 
         /* Prevent race conditions across threads */
         lock.lock();
