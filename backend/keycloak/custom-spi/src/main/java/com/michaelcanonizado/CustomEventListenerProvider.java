@@ -18,14 +18,17 @@ import java.util.Map;
 
 public class CustomEventListenerProvider implements EventListenerProvider {
     private KeycloakSession session;
+    private final TokenProvider tokenProvider;
+
     private Logger logger = LoggerFactory.getLogger(CustomEventListenerProvider.class);
 
     /* Custom Event Handlers */
     private final Map<EventType, Handler> userHandlers = new HashMap<>();
     private final Map<ResourceOperationKey, Handler> adminHandlers = new HashMap<>();
 
-    public CustomEventListenerProvider(KeycloakSession session) {
+    public CustomEventListenerProvider(KeycloakSession session, TokenProvider tokenProvider) {
         this.session = session;
+        this.tokenProvider = tokenProvider;
 
         /* User Events */
         userHandlers.put(EventType.REGISTER, new handleUserRegister());
@@ -58,6 +61,9 @@ public class CustomEventListenerProvider implements EventListenerProvider {
             logger.info("No custom event listener handler for admin event: " + key);
             return;
         }
+
+        String token = tokenProvider.getAccessToken();
+        logger.info("GETTING TOKEN FROM HANDLE ADMIN: " + token);
 
         handler.handle(session, adminEvent);
     }

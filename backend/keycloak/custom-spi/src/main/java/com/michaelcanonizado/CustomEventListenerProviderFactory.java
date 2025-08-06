@@ -8,15 +8,20 @@ import org.keycloak.models.KeycloakSessionFactory;
 
 public class CustomEventListenerProviderFactory implements EventListenerProviderFactory {
     private static final String PROVIDER_ID = "custom-event-listener";
+    private TokenProvider tokenProvider;
 
     @Override
     public EventListenerProvider create(KeycloakSession keycloakSession) {
-        return new CustomEventListenerProvider(keycloakSession);
+        return new CustomEventListenerProvider(keycloakSession, tokenProvider);
     }
 
     @Override
     public void init(Config.Scope scope) {
+        String tokenUri = System.getenv("TOKEN_URI");
+        String clientId = System.getenv("CLIENT_ID");
+        String clientSecret = System.getenv("CLIENT_SECRET");
 
+        tokenProvider = new TokenProvider(tokenUri, clientId, clientSecret);
     }
 
     @Override
