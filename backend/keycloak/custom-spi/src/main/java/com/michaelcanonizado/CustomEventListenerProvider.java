@@ -1,6 +1,7 @@
 package com.michaelcanonizado;
 
 import com.michaelcanonizado.handlers.Handler;
+import com.michaelcanonizado.handlers.ResourceOperationKey;
 import com.michaelcanonizado.handlers.handleUserRegister;
 import org.keycloak.events.Event;
 import org.keycloak.events.EventListenerProvider;
@@ -9,13 +10,10 @@ import org.keycloak.events.admin.AdminEvent;
 import org.keycloak.events.admin.OperationType;
 import org.keycloak.events.admin.ResourceType;
 import org.keycloak.models.KeycloakSession;
-import org.keycloak.models.RealmModel;
-import org.keycloak.models.UserModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CustomEventListenerProvider implements EventListenerProvider {

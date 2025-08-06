@@ -1,4 +1,4 @@
-package com.michaelcanonizado;
+package com.michaelcanonizado.handlers;
 
 import org.keycloak.events.admin.OperationType;
 import org.keycloak.events.admin.ResourceType;
