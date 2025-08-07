@@ -1,8 +1,8 @@
 package com.michaelcanonizado.handlers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.michaelcanonizado.CustomEventListenerProvider;
+import com.michaelcanonizado.HttpMethod;
+import com.michaelcanonizado.HttpRequestHelper;
 import com.michaelcanonizado.TokenProvider;
 import org.keycloak.events.Event;
 import org.keycloak.events.admin.AdminEvent;
@@ -12,10 +12,6 @@ import org.keycloak.models.UserModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -23,8 +19,6 @@ import java.util.Map;
 
 public class handleUserRegister implements Handler{
     private final Logger logger = LoggerFactory.getLogger(CustomEventListenerProvider.class);
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    private final HttpClient httpClient = HttpClient.newHttpClient();
 
     @Override
     public void handle(TokenProvider tokenProvider, KeycloakSession session, Event event) {
@@ -49,7 +43,11 @@ public class handleUserRegister implements Handler{
         Map<String, Object> data = new HashMap<>();
         data.put("name",userModel.getFirstName());
         data.put("username",username);
-        request(tokenProvider.getAccessToken(), data);
+        String uri = System.getenv("USER_SERVICE_URI");
+
+        HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
+        logger.info("Status Code: " + response.statusCode());
+        logger.info("Body: " + response.body());
     }
 
     @Override
@@ -79,27 +77,10 @@ public class handleUserRegister implements Handler{
         Map<String, Object> data = new HashMap<>();
         data.put("name",userModel.getFirstName());
         data.put("username",username);
-        request(tokenProvider.getAccessToken(), data);
-    }
+        String uri = System.getenv("USER_SERVICE_URI");
 
-    private void request(String token, Object body) {
-        String serviceURI = System.getenv("USER_SERVICE_URI");
-        try {
-            String jsonBody = objectMapper.writeValueAsString(body);
-
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(serviceURI))
-                    .header("Authorization", "Bearer " + token)
-                    .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
-                    .build();
-
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-
-            logger.info("Status code: " + response.statusCode());
-            logger.info("Response body: " + response.body());
-        } catch (IOException | InterruptedException e) {
-            logger.error("ERROR SENDING REQUEST", e);
-        }
+        HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
+        logger.info("Status Code: " + response.statusCode());
+        logger.info("Body: " + response.body());
     }
 }
