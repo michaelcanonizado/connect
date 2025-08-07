@@ -60,4 +60,9 @@ public class UserService {
         }
         repository.deleteById(id);
     }
+
+    public void deleteByAuthId(UUID authId) {
+        User user = repository.findByAuthId(authId).orElseThrow(() -> new UserNotFoundException("User being deleted doesn't exist"));
+        repository.deleteById(user.getId());
+    }
 }

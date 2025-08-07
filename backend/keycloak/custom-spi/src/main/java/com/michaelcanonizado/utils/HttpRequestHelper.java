@@ -32,6 +32,9 @@ public class HttpRequestHelper {
                 case POST:
                     builder.POST(HttpRequest.BodyPublishers.ofString(jsonBody));
                     break;
+                case DELETE:
+                    builder.DELETE();
+                    break;
                 default:
                     /* For any other HTTP method */
                     throw new Exception("Unhandled HttpRequestHelper Method!");
