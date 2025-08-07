@@ -16,10 +16,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    /* Sub/ID of the user's instance on Keycloak */
+    @Column(nullable = false, unique = true)
+    private UUID authId;
+
     @Column(nullable = false)
     private String name;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     private String bio;
@@ -29,7 +33,7 @@ public class User {
     private Instant lastSeenAt;
 
     @CreatedDate
-    @Column(updatable = false, nullable = false)
+    @Column(nullable = false, updatable = false)
     private Instant createdAt;
     @LastModifiedDate
     private Instant updatedAt;
@@ -37,7 +41,8 @@ public class User {
     public User() {
     }
 
-    public User(String name, String username, String bio, String profileUrl, boolean isOnline, Instant lastSeenAt) {
+    public User(UUID authId, String name, String username, String bio, String profileUrl, boolean isOnline, Instant lastSeenAt) {
+        this.authId = authId;
         this.name = name;
         this.username = username;
         this.bio = bio;
@@ -48,6 +53,10 @@ public class User {
 
     public UUID getId() {
         return id;
+    }
+
+    public UUID getAuthId() {
+        return authId;
     }
 
     public String getName() {

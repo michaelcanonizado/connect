@@ -74,13 +74,18 @@ public class handleUserRegister implements Handler{
         logger.info("Getting user attributes...");
         logger.info("Attributes: " + attributes);
 
+        String id = userModel.getId();
         String username = userModel.getUsername();
         String name = attributes.get("name").getFirst();
         String email = userModel.getEmail();
+        String bio = attributes.get("bio").getFirst();
 
         Map<String, Object> data = new HashMap<>();
-        data.put("name", name);
+        data.put("authId", id);
         data.put("username",username);
+        data.put("name", name);
+        data.put("email", email);
+        data.put("bio", bio);
 
         return data;
     }

@@ -5,10 +5,15 @@ import com.michaelcanonizado.CustomEventListenerProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -60,6 +65,7 @@ public class TokenProvider {
             if (accessToken == null || Instant.now().isAfter(expiresAt)) {
                 logger.info("No access token. Fetching new one...");
                 fetchNewToken();
+                logger.info("New access token: "+accessToken);
             }
 
             ZonedDateTime zdt = expiresAt.atZone(ZoneId.systemDefault());

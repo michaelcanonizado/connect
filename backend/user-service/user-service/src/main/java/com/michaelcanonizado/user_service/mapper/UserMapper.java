@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 public class UserMapper {
     public User fromCreateDTO(UserCreateDTO dto) {
         return new User(
+                dto.authId(),
                 dto.name(),
                 dto.username(),
-                null,
+                dto.bio(),
                 null,
                 false,
                 null
