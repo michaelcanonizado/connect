@@ -4,6 +4,7 @@ import com.michaelcanonizado.CustomEventListenerProvider;
 import com.michaelcanonizado.utils.HttpMethod;
 import com.michaelcanonizado.utils.HttpRequestHelper;
 import com.michaelcanonizado.utils.TokenProvider;
+import com.michaelcanonizado.utils.UserHelper;
 import org.keycloak.events.Event;
 import org.keycloak.events.admin.AdminEvent;
 import org.keycloak.models.KeycloakSession;
@@ -75,10 +76,10 @@ public class handleUserRegister implements Handler{
         logger.info("Attributes: " + attributes);
 
         String id = userModel.getId();
-        String username = userModel.getUsername();
-        String name = attributes.get("name").getFirst();
-        String email = userModel.getEmail();
-        String bio = attributes.get("bio").getFirst();
+        String username = UserHelper.getSingleValue(attributes, "username");
+        String name = UserHelper.getSingleValue(attributes, "name");
+        String email = UserHelper.getSingleValue(attributes, "email");
+        String bio = UserHelper.getSingleValue(attributes, "bio");
 
         Map<String, Object> data = new HashMap<>();
         data.put("authId", id);
