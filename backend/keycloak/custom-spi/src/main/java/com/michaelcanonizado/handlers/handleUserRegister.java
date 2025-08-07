@@ -37,16 +37,19 @@ public class handleUserRegister implements Handler{
             return;
         }
 
+        Map<String, List<String>> attributes = userModel.getAttributes();
         String username = userModel.getUsername();
         String email = userModel.getEmail();
-        Map<String, List<String>> attributes = userModel.getAttributes();
-
-        logger.info("NEW USER REGISTERED:");
-        logger.info("Realm: " + realm.getName());
-        logger.info("User created: " + username);
-        logger.info("User Id: " + userId);
-        logger.info("Email: " + email);
         logger.info("Attributes: " + attributes);
+
+
+        /* Name should be a generic name just like in instagram.
+           Not Firstname and Lastname. Also update user-service DTO,
+           More attributes can be passed such as email. */
+        Map<String, Object> data = new HashMap<>();
+        data.put("name",userModel.getFirstName());
+        data.put("username",username);
+        request(tokenProvider.getAccessToken(), data);
     }
 
     @Override
@@ -63,28 +66,24 @@ public class handleUserRegister implements Handler{
             return;
         }
 
+        Map<String, List<String>> attributes = userModel.getAttributes();
         String username = userModel.getUsername();
         String email = userModel.getEmail();
-        Map<String, List<String>> attributes = userModel.getAttributes();
-
-        logger.info("Realm: " + realm.getName());
-        logger.info("User created: " + username);
-        logger.info("User Id: " + userId);
-        logger.info("Email: " + email);
         logger.info("Attributes: " + attributes);
 
+
+
+        /* Name should be a generic name just like in instagram.
+           Not Firstname and Lastname. Also update user-service DTO,
+           More attributes can be passed such as email. */
         Map<String, Object> data = new HashMap<>();
         data.put("name",userModel.getFirstName());
         data.put("username",username);
-
-        logger.info("Sending user data to user-service...");
-        logger.info("Data: "+data);
         request(tokenProvider.getAccessToken(), data);
     }
 
     private void request(String token, Object body) {
         String serviceURI = System.getenv("USER_SERVICE_URI");
-        logger.info("user-service uri: "+serviceURI);
         try {
             String jsonBody = objectMapper.writeValueAsString(body);
 

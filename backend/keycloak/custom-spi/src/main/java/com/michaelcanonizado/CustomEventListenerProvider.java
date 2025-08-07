@@ -62,9 +62,6 @@ public class CustomEventListenerProvider implements EventListenerProvider {
             return;
         }
 
-        String token = tokenProvider.getAccessToken();
-        logger.info("GETTING TOKEN FROM HANDLE ADMIN: " + token);
-
         handler.handle(tokenProvider, session, adminEvent);
     }
 
