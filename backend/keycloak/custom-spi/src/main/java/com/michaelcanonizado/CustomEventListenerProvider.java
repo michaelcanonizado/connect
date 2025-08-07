@@ -3,6 +3,7 @@ package com.michaelcanonizado;
 import com.michaelcanonizado.handlers.Handler;
 import com.michaelcanonizado.handlers.ResourceOperationKey;
 import com.michaelcanonizado.handlers.handleUserRegister;
+import com.michaelcanonizado.utils.TokenProvider;
 import org.keycloak.events.Event;
 import org.keycloak.events.EventListenerProvider;
 import org.keycloak.events.EventType;

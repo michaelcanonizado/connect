@@ -1,4 +1,4 @@
-package com.michaelcanonizado;
+package com.michaelcanonizado.utils;
 
 public enum HttpMethod {
     GET,

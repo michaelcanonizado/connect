@@ -1,9 +1,9 @@
 package com.michaelcanonizado.handlers;
 
 import com.michaelcanonizado.CustomEventListenerProvider;
-import com.michaelcanonizado.HttpMethod;
-import com.michaelcanonizado.HttpRequestHelper;
-import com.michaelcanonizado.TokenProvider;
+import com.michaelcanonizado.utils.HttpMethod;
+import com.michaelcanonizado.utils.HttpRequestHelper;
+import com.michaelcanonizado.utils.TokenProvider;
 import org.keycloak.events.Event;
 import org.keycloak.events.admin.AdminEvent;
 import org.keycloak.models.KeycloakSession;
