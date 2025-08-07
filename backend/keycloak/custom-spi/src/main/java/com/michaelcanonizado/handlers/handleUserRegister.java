@@ -31,24 +31,15 @@ public class handleUserRegister implements Handler{
             return;
         }
 
-        Map<String, List<String>> attributes = userModel.getAttributes();
-        String username = userModel.getUsername();
-        String email = userModel.getEmail();
-        logger.info("Getting user attributes...");
-        logger.info("Attributes: " + attributes);
+        Map<String, Object> data = buildDTO(userModel);
 
-        /* Name should be a generic name just like in instagram.
-           Not Firstname and Lastname. Also update user-service DTO,
-           More attributes can be passed such as email. */
-        Map<String, Object> data = new HashMap<>();
-        data.put("name",userModel.getFirstName());
-        data.put("username",username);
         String uri = System.getenv("USER_SERVICE_URI");
-
         HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
+
+        logger.info("Request Body: " + data);
         logger.info("POSTing to " + uri + " complete...");
-        logger.info("Status Code: " + response.statusCode());
-        logger.info("Body: " + response.body());
+        logger.info("Response Status Code: " + response.statusCode());
+        logger.info("Response Body: " + response.body());
     }
 
     @Override
@@ -65,23 +56,32 @@ public class handleUserRegister implements Handler{
             return;
         }
 
+        Map<String, Object> data = buildDTO(userModel);
+
+        String uri = System.getenv("USER_SERVICE_URI");
+        HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
+
+        logger.info("Request Body: " + data);
+        logger.info("POSTing to " + uri + " complete...");
+        logger.info("Response Status Code: " + response.statusCode());
+        logger.info("Response Body: " + response.body());
+    }
+
+    /* Extract the necessary data to match the user-service DTO */
+    private Map<String, Object> buildDTO(UserModel userModel) {
+        /* Update user-service DTO and determine the final user-registration data */
         Map<String, List<String>> attributes = userModel.getAttributes();
-        String username = userModel.getUsername();
-        String email = userModel.getEmail();
         logger.info("Getting user attributes...");
         logger.info("Attributes: " + attributes);
 
-        /* Name should be a generic name just like in instagram.
-           Not Firstname and Lastname. Also update user-service DTO,
-           More attributes can be passed such as email. */
-        Map<String, Object> data = new HashMap<>();
-        data.put("name",userModel.getFirstName());
-        data.put("username",username);
-        String uri = System.getenv("USER_SERVICE_URI");
+        String username = userModel.getUsername();
+        String name = attributes.get("name").getFirst();
+        String email = userModel.getEmail();
 
-        HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
-        logger.info("POSTing to " + uri + " complete...");
-        logger.info("Status Code: " + response.statusCode());
-        logger.info("Body: " + response.body());
+        Map<String, Object> data = new HashMap<>();
+        data.put("name", name);
+        data.put("username",username);
+
+        return data;
     }
 }
