@@ -34,8 +34,8 @@ public class handleUserRegister implements Handler{
         Map<String, List<String>> attributes = userModel.getAttributes();
         String username = userModel.getUsername();
         String email = userModel.getEmail();
+        logger.info("Getting user attributes...");
         logger.info("Attributes: " + attributes);
-
 
         /* Name should be a generic name just like in instagram.
            Not Firstname and Lastname. Also update user-service DTO,
@@ -46,6 +46,7 @@ public class handleUserRegister implements Handler{
         String uri = System.getenv("USER_SERVICE_URI");
 
         HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
+        logger.info("POSTing to " + uri + " complete...");
         logger.info("Status Code: " + response.statusCode());
         logger.info("Body: " + response.body());
     }
@@ -67,9 +68,8 @@ public class handleUserRegister implements Handler{
         Map<String, List<String>> attributes = userModel.getAttributes();
         String username = userModel.getUsername();
         String email = userModel.getEmail();
+        logger.info("Getting user attributes...");
         logger.info("Attributes: " + attributes);
-
-
 
         /* Name should be a generic name just like in instagram.
            Not Firstname and Lastname. Also update user-service DTO,
@@ -80,6 +80,7 @@ public class handleUserRegister implements Handler{
         String uri = System.getenv("USER_SERVICE_URI");
 
         HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
+        logger.info("POSTing to " + uri + " complete...");
         logger.info("Status Code: " + response.statusCode());
         logger.info("Body: " + response.body());
     }

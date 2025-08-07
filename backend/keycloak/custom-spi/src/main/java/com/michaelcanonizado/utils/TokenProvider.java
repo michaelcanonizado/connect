@@ -46,7 +46,7 @@ public class TokenProvider {
     }
 
     public String getAccessToken() {
-        logger.info("GETTING ACCESS TOKEN...");
+        logger.info("Getting access token...");
         /* If a valid token exists, return immediately  */
         if (accessToken != null && Instant.now().isBefore(expiresAt)) {
             return accessToken;
@@ -57,15 +57,16 @@ public class TokenProvider {
         try {
             /* If no token exists or it has expired, fetch a new one */
             if (accessToken == null || Instant.now().isAfter(expiresAt)) {
-                logger.info("NO ACCESS TOKEN AVAILABLE. FETCHING NEW ONE...");
+                logger.info("No access token. Fetching new one...");
                 fetchNewToken();
             }
-            return accessToken;
-        } finally {
+
             ZonedDateTime zdt = expiresAt.atZone(ZoneId.systemDefault());
             String formattedDate = zdt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-            logger.info("SUCCESSFULLY FETCHED TOKEN. EXPIRES IN: " + formattedDate);
+            logger.info("Successfully fetched token. Expires in: " + formattedDate);
 
+            return accessToken;
+        } finally {
             lock.unlock();
         }
     }
@@ -88,16 +89,11 @@ public class TokenProvider {
             /* Send request */
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() != 200) {
-                throw new RuntimeException("Failed to fetch token. Error code: " + response.statusCode() + " Body: " + response.body());
+                    throw new RuntimeException("Failed to fetch token. Error code: " + response.statusCode() + " Body: " + response.body());
             }
 
             /* Parse the response body */
             Map<String, Object> json = objectMapper.readValue(response.body(), Map.class);
-
-            logger.info("TOKEN RESPONSE:");
-            json.forEach((key, value) -> {
-                logger.info(key + ": " + value);
-            });
 
             /* Cache access token and expiry time */
             int expiresIn = (int) json.get("expires_in");
