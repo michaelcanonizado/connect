@@ -35,7 +35,7 @@ public class TokenProvider {
     /* Lock to ensure thread-safe access when multiple threads request a token */
     private final ReentrantLock lock = new ReentrantLock();
 
-    private Logger logger = LoggerFactory.getLogger(CustomEventListenerProvider.class);
+    private Logger logger = LoggerFactory.getLogger(TokenProvider.class);
 
     public TokenProvider(String tokenUri, String clientId, String clientSecret) {
         logger.info("CONSTRUCTING TOKEN PROVIDER...");

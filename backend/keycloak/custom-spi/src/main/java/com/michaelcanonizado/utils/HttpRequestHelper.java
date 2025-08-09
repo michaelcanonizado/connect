@@ -15,7 +15,7 @@ import java.net.http.HttpResponse;
 import java.util.Optional;
 
 public class HttpRequestHelper {
-    private static final Logger logger = LoggerFactory.getLogger(CustomEventListenerProvider.class);
+    private static final Logger logger = LoggerFactory.getLogger(HttpRequestHelper.class);
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private static final HttpClient httpClient = HttpClient.newHttpClient();
 

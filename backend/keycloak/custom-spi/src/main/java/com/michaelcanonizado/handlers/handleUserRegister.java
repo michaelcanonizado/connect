@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class handleUserRegister implements Handler{
-    private final Logger logger = LoggerFactory.getLogger(CustomEventListenerProvider.class);
+    private final Logger logger = LoggerFactory.getLogger(handleUserRegister.class);
 
     @Override
     public void handle(TokenProvider tokenProvider, KeycloakSession session, Event event) {
