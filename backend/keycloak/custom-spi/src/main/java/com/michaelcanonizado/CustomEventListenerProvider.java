@@ -3,7 +3,7 @@ package com.michaelcanonizado;
 import com.michaelcanonizado.handlers.Handler;
 import com.michaelcanonizado.handlers.ResourceOperationKey;
 import com.michaelcanonizado.handlers.handleUserDelete;
-import com.michaelcanonizado.handlers.handleUserRegister;
+import com.michaelcanonizado.handlers.HandleUserRegister;
 import com.michaelcanonizado.utils.TokenProvider;
 import org.keycloak.events.Event;
 import org.keycloak.events.EventListenerProvider;
@@ -33,10 +33,10 @@ public class CustomEventListenerProvider implements EventListenerProvider {
         this.tokenProvider = tokenProvider;
 
         /* User Events */
-        userHandlers.put(EventType.REGISTER, new handleUserRegister());
+        userHandlers.put(EventType.REGISTER, new HandleUserRegister());
 
         /* Admin Events */
-        adminHandlers.put(new ResourceOperationKey(ResourceType.USER, OperationType.CREATE), new handleUserRegister());
+        adminHandlers.put(new ResourceOperationKey(ResourceType.USER, OperationType.CREATE), new HandleUserRegister());
         adminHandlers.put(new ResourceOperationKey(ResourceType.USER, OperationType.DELETE), new handleUserDelete());
     }
 

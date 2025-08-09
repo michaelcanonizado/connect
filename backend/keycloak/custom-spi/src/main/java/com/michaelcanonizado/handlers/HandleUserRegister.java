@@ -1,6 +1,5 @@
 package com.michaelcanonizado.handlers;
 
-import com.michaelcanonizado.CustomEventListenerProvider;
 import com.michaelcanonizado.utils.HttpMethod;
 import com.michaelcanonizado.utils.HttpRequestHelper;
 import com.michaelcanonizado.utils.TokenProvider;
@@ -18,8 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class handleUserRegister implements Handler{
-    private final Logger logger = LoggerFactory.getLogger(handleUserRegister.class);
+public class HandleUserRegister implements Handler{
+    private final Logger logger = LoggerFactory.getLogger(HandleUserRegister.class);
 
     @Override
     public void handle(TokenProvider tokenProvider, KeycloakSession session, Event event) {
