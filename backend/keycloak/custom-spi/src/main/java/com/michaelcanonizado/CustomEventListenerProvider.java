@@ -2,7 +2,7 @@ package com.michaelcanonizado;
 
 import com.michaelcanonizado.handlers.Handler;
 import com.michaelcanonizado.handlers.ResourceOperationKey;
-import com.michaelcanonizado.handlers.handleUserDelete;
+import com.michaelcanonizado.handlers.HandleUserDelete;
 import com.michaelcanonizado.handlers.HandleUserRegister;
 import com.michaelcanonizado.utils.TokenProvider;
 import org.keycloak.events.Event;
@@ -37,7 +37,7 @@ public class CustomEventListenerProvider implements EventListenerProvider {
 
         /* Admin Events */
         adminHandlers.put(new ResourceOperationKey(ResourceType.USER, OperationType.CREATE), new HandleUserRegister());
-        adminHandlers.put(new ResourceOperationKey(ResourceType.USER, OperationType.DELETE), new handleUserDelete());
+        adminHandlers.put(new ResourceOperationKey(ResourceType.USER, OperationType.DELETE), new HandleUserDelete());
     }
 
     @Override
