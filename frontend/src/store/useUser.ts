@@ -25,7 +25,7 @@ export const useUser = create<UserState>((set) => {
 				console.log('Fetching user...');
 				/* IMPORTANT: verify incoming data with zod instead of telling axios: "trust me bro, that's UserDTO" */
 				const response = await api.get<UserDTO>(
-					'/user/6692db05-a35b-4f55-879c-1358164ba6fb'
+					'api/v1/users/6692db05-a35b-4f55-879c-1358164ba6fb'
 				);
 				set({ user: response.data });
 			} catch (error) {
