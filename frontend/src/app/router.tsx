@@ -6,7 +6,6 @@ import { RouterProvider } from 'react-router-dom';
 import Callback from './pages/(authentication)/callback';
 import Protected from '@/features/authentication/components/protected';
 import paths from './paths';
-import ChatsRedirector from './pages/(user)/chats-redirector';
 import Landing from './pages/landing';
 import UserLayout from '@/app/layouts/user-layout';
 import Archived from './pages/(user)/archived';

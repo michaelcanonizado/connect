@@ -11,7 +11,7 @@ export default function Protected({ children }: ComponentChildrenProp) {
 		if (!isAuthenticated) {
 			login();
 		}
-	}, [isAuthenticated]);
+	}, [isAuthenticated, login]);
 
 	if (!isAuthenticated) return null;
 

@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+type Chat = {
+	id: string;
+};
+
 function mockApiCall() {
 	return new Promise((resolve) => {
 		setTimeout(() => {
