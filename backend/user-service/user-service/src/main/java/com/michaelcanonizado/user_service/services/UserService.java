@@ -43,6 +43,11 @@ public class UserService {
         return mapper.toResponseDTO(user);
     }
 
+    public UserResponseDTO getByAuthId(UUID authId) {
+        User user = repository.findByAuthId(authId).orElseThrow(()-> new UserNotFoundException("User not found"));
+        return mapper.toResponseDTO(user);
+    }
+
     public UserResponseDTO update(UUID id, UserUpdateDTO dto) {
         try {
             User user = repository.findById(id).orElseThrow(()-> new UserNotFoundException("User being updated doesn't exist"));

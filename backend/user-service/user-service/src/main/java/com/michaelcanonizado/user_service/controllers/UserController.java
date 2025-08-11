@@ -28,6 +28,14 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
+    @GetMapping("/users/me")
+    public ResponseEntity<UserResponseDTO> getAuthenticatedUser(@AuthenticationPrincipal Jwt jwt) {
+        String sub_id = jwt.getClaim("sub");
+        System.out.println("Getting user of sub_id: " + sub_id);
+        UserResponseDTO user = service.getByAuthId(UUID.fromString(sub_id));
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
     @GetMapping("/users/{id}")
     public ResponseEntity<UserResponseDTO> getUser(@PathVariable UUID id, @AuthenticationPrincipal Jwt jwt) {
         UserResponseDTO user = service.get(id);
