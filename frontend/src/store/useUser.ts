@@ -22,7 +22,7 @@ export const useUser = create<UserState>((set) => {
 
 		fetchUser: async () => {
 			try {
-				console.log('Fetching user...');
+				console.log('useUser(): Fetching user...');
 				/* IMPORTANT: verify incoming data with zod instead of telling axios: "trust me bro, that's UserDTO" */
 				const response = await api.get<UserDTO>(
 					'api/v1/users/6692db05-a35b-4f55-879c-1358164ba6fb'
