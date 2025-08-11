@@ -24,9 +24,7 @@ export const useUser = create<UserState>((set) => {
 			try {
 				console.log('useUser(): Fetching user...');
 				/* IMPORTANT: verify incoming data with zod instead of telling axios: "trust me bro, that's UserDTO" */
-				const response = await api.get<UserDTO>(
-					'api/v1/users/6692db05-a35b-4f55-879c-1358164ba6fb'
-				);
+				const response = await api.get<UserDTO>('api/v1/users/me');
 				set({ user: response.data });
 			} catch (error) {
 				console.error('Failed to fetch user! ', error);
