@@ -8,6 +8,8 @@ import {
 import { NavLink, useParams } from 'react-router-dom';
 import paths from '@/app/paths';
 import ProfileActions from './profile-actions';
+import { useUser } from '@/store/useUser';
+import { TextBody } from '@/components/text';
 
 type Link = {
 	icon: LucideIcon;
@@ -35,6 +37,7 @@ const links: Link[] = [
 
 export default function Sidebar({ className }: ComponentClassNameProp) {
 	const { id } = useParams();
+	const user = useUser((state) => state.user);
 
 	return (
 		<div
@@ -67,6 +70,7 @@ export default function Sidebar({ className }: ComponentClassNameProp) {
 				})}
 			</div>
 			<div className="">
+				<TextBody>{user?.username}</TextBody>
 				<ProfileActions />
 			</div>
 		</div>

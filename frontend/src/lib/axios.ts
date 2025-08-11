@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-	const provider = useAuthentication((state) => state.provider);
+	const provider = useAuthentication.getState().provider;
 
 	if (provider && provider.authenticated) {
 		config.headers.Authorization = `Bearer ${provider.token}`;
