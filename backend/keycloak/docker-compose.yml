@@ -54,7 +54,6 @@ services:
         condition: service_healthy
     volumes:
       - ./custom-spi/target/custom-spi-1.0-SNAPSHOT.jar:/opt/keycloak/providers/custom-spi-1.0-SNAPSHOT.jar
-      - ./keycloak-benchmark/dataset/target/keycloak-benchmark-dataset-999.0.0-SNAPSHOT.jar:/opt/keycloak/providers/keycloak-benchmark-dataset-999.0.0-SNAPSHOT.jar
     networks:
       - keycloak-network
     env_file:
