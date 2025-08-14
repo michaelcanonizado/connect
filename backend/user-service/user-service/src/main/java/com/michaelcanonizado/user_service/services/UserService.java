@@ -26,9 +26,12 @@ public class UserService {
     private UserMapper mapper;
 
     public UserResponseDTO create(UserCreateDTO dto) {
-        try {
+        String temporaryProfilePicture = "https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=s0aTdmT5aU6b8ot7VKm11DeID6NctRCpB755rA1BIP0=";
 
+        try {
             User user = mapper.fromCreateDTO(dto);
+            user.setProfileUrl(temporaryProfilePicture);
+
             repository.save(user);
             User createdUser = repository.findById(user.getId()).orElseThrow(()-> new UserNotCreatedException("User not found after saving"));
             return mapper.toResponseDTO(createdUser);
@@ -44,7 +47,12 @@ public class UserService {
     }
 
     public UserResponseDTO getByAuthId(UUID authId) {
-        User user = repository.findByAuthId(authId).orElseThrow(()-> new UserNotFoundException("User not found"));
+        User user = repository.findByAuthId(authId).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return mapper.toResponseDTO(user);
+    }
+
+    public UserResponseDTO getByUsername(String username) {
+        User user = repository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User not found"));
         return mapper.toResponseDTO(user);
     }
 

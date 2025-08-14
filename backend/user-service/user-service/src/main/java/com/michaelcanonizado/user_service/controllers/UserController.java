@@ -14,6 +14,8 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -43,6 +45,12 @@ public class UserController {
         String email = jwt.getClaim("email");
         System.out.println("Request made by: " + email);
 
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/users/search")
+    public ResponseEntity<UserResponseDTO> getUserByUsername(@RequestParam("username")Optional<String> username) {
+        UserResponseDTO user = service.getByUsername(username.toString());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
