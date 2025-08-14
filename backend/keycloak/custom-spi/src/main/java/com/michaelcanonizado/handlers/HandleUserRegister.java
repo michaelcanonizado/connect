@@ -1,5 +1,9 @@
 package com.michaelcanonizado.handlers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.michaelcanonizado.utils.HttpMethod;
 import com.michaelcanonizado.utils.HttpRequestHelper;
 import com.michaelcanonizado.utils.TokenProvider;
@@ -19,9 +23,14 @@ import java.util.Map;
 
 public class HandleUserRegister implements Handler{
     private final Logger logger = LoggerFactory.getLogger(HandleUserRegister.class);
+    private static final ObjectMapper mapper = new ObjectMapper()
+            .enable(SerializationFeature.INDENT_OUTPUT);
+    private static final ObjectWriter writer = mapper.writerWithDefaultPrettyPrinter();
 
     @Override
     public void handle(TokenProvider tokenProvider, KeycloakSession session, Event event) {
+        System.out.println("=================================| CREATING USER | =================================");
+
         String userId = event.getUserId();
         RealmModel realm = session.realms().getRealm(event.getRealmId());
         UserModel userModel = session.users().getUserById(realm, userId);
@@ -36,14 +45,21 @@ public class HandleUserRegister implements Handler{
         String uri = System.getenv("USER_SERVICE_URI");
         HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
 
-        logger.info("Request Body: " + data);
-        logger.info("POSTing to " + uri + " complete...");
-        logger.info("Response Status Code: " + response.statusCode());
-        logger.info("Response Body: " + response.body());
+        System.out.println();
+        logger.info("Details:");
+        System.out.println("Request Body: " + data);
+        System.out.println("POSTing to " + uri + " complete...");
+        System.out.println("Response Status Code: " + response.statusCode());
+        System.out.println("Response Body: " + response.body());
+        System.out.println();
+
+        System.out.println("====================================================================================");
     }
 
     @Override
     public void handle(TokenProvider tokenProvider, KeycloakSession session, AdminEvent event) {
+        System.out.println("=================================| CREATING USER | =================================");
+
         String resourcePath = event.getResourcePath();
         String userId = resourcePath != null && resourcePath.startsWith("users/") ?
                 resourcePath.substring("users/".length()) : "";
@@ -61,10 +77,15 @@ public class HandleUserRegister implements Handler{
         String uri = System.getenv("USER_SERVICE_URI");
         HttpResponse response =  HttpRequestHelper.sendRequest(uri, tokenProvider.getAccessToken(), HttpMethod.POST, data);
 
-        logger.info("Request Body: " + data);
-        logger.info("POSTing to " + uri + " complete...");
-        logger.info("Response Status Code: " + response.statusCode());
-        logger.info("Response Body: " + response.body());
+        System.out.println();
+        logger.info("Details:");
+        System.out.println("Request Body: " + data);
+        System.out.println("POSTing to " + uri + " complete...");
+        System.out.println("Response Status Code: " + response.statusCode());
+        System.out.println("Response Body: " + response.body());
+        System.out.println();
+
+        System.out.println("====================================================================================");
     }
 
     /* Extract the necessary data to match the user-service DTO */
