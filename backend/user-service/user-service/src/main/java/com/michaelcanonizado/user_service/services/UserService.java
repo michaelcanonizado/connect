@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -51,9 +52,14 @@ public class UserService {
         return mapper.toResponseDTO(user);
     }
 
-    public UserResponseDTO getByUsername(String username) {
-        User user = repository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User not found"));
-        return mapper.toResponseDTO(user);
+    public List<UserResponseDTO> getUsers(String keyword) {
+        if (keyword.isBlank()) {
+            return List.of();
+        }
+
+            return repository.findByUsernameContainingIgnoreCaseOrNameContainingIgnoreCase(keyword, keyword).stream().map(user -> {
+                return mapper.toResponseDTO(user);
+            }).toList();
     }
 
     public UserResponseDTO update(UUID id, UserUpdateDTO dto) {

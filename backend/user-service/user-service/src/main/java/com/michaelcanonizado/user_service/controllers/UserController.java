@@ -14,8 +14,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -49,9 +48,9 @@ public class UserController {
     }
 
     @GetMapping("/users/search")
-    public ResponseEntity<UserResponseDTO> getUserByUsername(@RequestParam("username")Optional<String> username) {
-        UserResponseDTO user = service.getByUsername(username.toString());
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    public ResponseEntity<List<UserResponseDTO>> getUsersByKeyword(@RequestParam("keyword")String keyword) {
+        List<UserResponseDTO> users = service.getUsers(keyword.trim());
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @PutMapping("/users/{id}")
