@@ -1,25 +1,24 @@
-# 🔷Connect (WIP)
+ hy# 🔷Connect (WIP)
 
 This project is currently **under construction**.  
 I’m building a full-featured real-time messaging platform where users can communicate in private and group conversations.
 
 ## 🎯 Goals
 - ✅Build an enterprise-grade backend using microservices architecture
-- ✅Implement OAuth2 authentication and 2 factor authentication
+- ✅Implement traditional login and oauth
 - ✅Enable real-time chat using WebSockets
-- ✅Use Kafka for asynchronous communication between services
-- ✅Design with service discovery, API gateway, and centralized error handling
+- ✅use message queue for asynch communication
 - ✅Build a clean and responsive frontend UI
 - ✅Handle file uploads, video calls, and voice calls
-- ✅Support Docker-based deployment
   
 ## ⚙️ Current Tech Stack
 ### Frontend
-- [Next.js](https://nextjs.org/)
+- [Vite + ReactJS](https://vite.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 
 ### Backend
 - [Java Spring Boot](https://spring.io/projects/spring-boot)
+- [Keycloak](https://www.keycloak.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 
 ---
